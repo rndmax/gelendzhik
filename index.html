@@ -149,13 +149,6 @@
         margin-top: 18px;
       }
 
-      .hero__contacts-label {
-        flex: 1 0 100%;
-        color: rgba(255, 255, 255, 0.74);
-        font-size: 0.88rem;
-        font-weight: 720;
-      }
-
       .contact-link {
         display: inline-flex;
         min-height: 42px;
@@ -181,36 +174,13 @@
         transform: translateY(-1px);
       }
 
-      .contact-link[aria-disabled="true"] {
-        cursor: default;
-        pointer-events: none;
-      }
-
-      .contact-link[aria-disabled="true"]:hover {
-        transform: none;
-      }
-
       .contact-icon {
-        display: inline-flex;
         width: 28px;
         height: 28px;
-        align-items: center;
-        justify-content: center;
         border-radius: 50%;
         background: #ffffff;
-        color: var(--teal-dark);
-        font-size: 0.68rem;
-        font-weight: 860;
-        letter-spacing: 0;
-        line-height: 1;
-      }
-
-      .contact-link[data-contact="telegram"] .contact-icon {
-        color: #168acd;
-      }
-
-      .contact-link[data-contact="max"] .contact-icon {
-        color: #264fc8;
+        object-fit: cover;
+        padding: 2px;
       }
 
       .controls {
@@ -617,14 +587,18 @@
           Привет, меня зовут Макс Коревский. Я посетил более 20 стран, и Геленджик — одно из моих любимых мест
           на нашей планете. С удовольствием поделюсь классными местами.
         </p>
-        <div class="hero__contacts" aria-label="Контакты для связи">
-          <span class="hero__contacts-label">Контакты для связи</span>
-          <a class="contact-link" href="#" data-contact="telegram" aria-disabled="true" aria-label="Telegram, ссылка будет добавлена позже">
-            <span class="contact-icon" aria-hidden="true">TG</span>
+        <div class="hero__contacts" aria-label="Ссылки на мессенджеры">
+          <a class="contact-link" href="https://t.me/rndmax" data-contact="telegram" aria-label="Написать в Telegram">
+            <img class="contact-icon" src="assets/telegram-icon.svg" width="28" height="28" alt="" aria-hidden="true" />
             <span>Telegram</span>
           </a>
-          <a class="contact-link" href="#" data-contact="max" aria-disabled="true" aria-label="Max, ссылка будет добавлена позже">
-            <span class="contact-icon" aria-hidden="true">Max</span>
+          <a
+            class="contact-link"
+            href="https://max.ru/u/f9LHodD0cOI0lvYzQ9ThTrBjnWMKufaDsUgf2ce-Eeaq1_Uko599Mn9bR_c"
+            data-contact="max"
+            aria-label="Написать в Max"
+          >
+            <img class="contact-icon" src="assets/max-icon.ico" width="28" height="28" alt="" aria-hidden="true" />
             <span>Max</span>
           </a>
         </div>

@@ -104,7 +104,7 @@ test("page has SEO metadata and semantic landmarks", () => {
   assert.equal([...html.matchAll(/<h1[\s>]/g)].length, 1);
 });
 
-test("hero introduces Max and shows placeholder contact links", () => {
+test("hero introduces Max and shows contact links with app icons", () => {
   assert.match(html, /Привет, меня зовут Макс Коревский\./);
   assert.match(html, /Я посетил более 20 стран/);
   assert.match(html, /Геленджик — одно из моих любимых мест\s+на нашей планете/);
@@ -113,9 +113,16 @@ test("hero introduces Max and shows placeholder contact links", () => {
     html,
     /<p class="hero__subtitle">\s*Личная подборка мест: природа, рестораны, кофейни, пляжи, детские места, спорт и полезные точки\.\s*<\/p>/,
   );
-  assert.match(html, /data-contact="telegram"[\s\S]*?>[\s\S]*?Telegram/);
-  assert.match(html, /data-contact="max"[\s\S]*?>[\s\S]*?Max/);
-  assert.match(html, /aria-disabled="true"/);
+  assert.match(
+    html,
+    /href="https:\/\/t\.me\/rndmax"[\s\S]*data-contact="telegram"[\s\S]*?>[\s\S]*?<img[\s\S]*src="assets\/telegram-icon\.svg"[\s\S]*?Telegram/,
+  );
+  assert.match(
+    html,
+    /href="https:\/\/max\.ru\/u\/f9LHodD0cOI0lvYzQ9ThTrBjnWMKufaDsUgf2ce-Eeaq1_Uko599Mn9bR_c"[\s\S]*data-contact="max"[\s\S]*?>[\s\S]*?<img[\s\S]*src="assets\/max-icon\.ico"[\s\S]*?Max/,
+  );
+  assert.doesNotMatch(html, /aria-disabled="true"/);
+  assert.doesNotMatch(html, /Контакты для связи/);
 });
 
 test("guide data keeps the requested categories and required fields", () => {
