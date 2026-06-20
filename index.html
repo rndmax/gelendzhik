@@ -1,0 +1,1421 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Гид по Геленджику</title>
+    <meta
+      name="description"
+      content="Личный мобильный гид по Геленджику: природа, рестораны, кофейни, пляжи, парки, детские места, спорт и полезные точки."
+    />
+    <meta property="og:title" content="Гид по Геленджику" />
+    <meta
+      property="og:description"
+      content="Личная подборка мест в Геленджике: куда сходить, где поесть, где гулять и что посмотреть с детьми."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:image" content="assets/gelendzhik-hero.jpg" />
+    <meta name="theme-color" content="#0f766e" />
+    <script type="application/ld+json" id="jsonLd">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Гид по Геленджику",
+        "description": "Личная подборка мест: природа, рестораны, кофейни, пляжи, детские места, спорт и полезные точки."
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --page: #f7fbfb;
+        --surface: #ffffff;
+        --surface-soft: #edf8f6;
+        --text: #13201f;
+        --muted: #607371;
+        --line: #d8e8e5;
+        --teal: #0f766e;
+        --teal-dark: #0b4f4b;
+        --pine: #17493f;
+        --sky: #d9eef2;
+        --sun: #e98a54;
+        --shadow: 0 18px 45px rgba(18, 53, 49, 0.12);
+        --shadow-soft: 0 10px 28px rgba(18, 53, 49, 0.09);
+        --radius: 8px;
+        --radius-lg: 18px;
+        --container: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(217, 238, 242, 0.7), transparent 360px),
+          var(--page);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.55;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 330px;
+        isolation: isolate;
+        overflow: hidden;
+        color: #ffffff;
+      }
+
+      .hero__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background:
+          linear-gradient(180deg, rgba(6, 32, 34, 0.14), rgba(6, 32, 34, 0.68)),
+          radial-gradient(circle at 76% 12%, rgba(233, 138, 84, 0.28), transparent 32%);
+      }
+
+      .hero__content {
+        display: flex;
+        min-height: 330px;
+        width: min(100% - 32px, var(--container));
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 48px 0 34px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(2.35rem, 12vw, 5.7rem);
+        font-weight: 780;
+        line-height: 0.94;
+      }
+
+      .hero__subtitle {
+        max-width: 740px;
+        margin-top: 18px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: clamp(1rem, 4.6vw, 1.32rem);
+        line-height: 1.45;
+      }
+
+      .controls {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(216, 232, 229, 0.85);
+        background: rgba(247, 251, 251, 0.88);
+        backdrop-filter: blur(18px);
+      }
+
+      .controls__inner {
+        width: min(100% - 28px, var(--container));
+        margin: 0 auto;
+        padding: 12px 0 14px;
+      }
+
+      .search {
+        position: relative;
+      }
+
+      .search::before {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--teal);
+        border-radius: 50%;
+        content: "";
+        transform: translateY(-58%);
+      }
+
+      .search::after {
+        position: absolute;
+        top: 50%;
+        left: 31px;
+        width: 8px;
+        height: 2px;
+        border-radius: 99px;
+        background: var(--teal);
+        content: "";
+        transform: rotate(45deg) translate(4px, 6px);
+        transform-origin: center;
+      }
+
+      .search__input {
+        width: 100%;
+        min-height: 52px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        outline: none;
+        background: var(--surface);
+        color: var(--text);
+        box-shadow: var(--shadow-soft);
+        font-size: 1rem;
+        padding: 0 16px 0 48px;
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .search__input:focus {
+        border-color: rgba(15, 118, 110, 0.65);
+        box-shadow:
+          0 0 0 4px rgba(15, 118, 110, 0.14),
+          var(--shadow-soft);
+      }
+
+      .chip-row-wrap {
+        position: relative;
+        margin-top: 10px;
+      }
+
+      .chip-row-wrap::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 64px;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        background: linear-gradient(90deg, rgba(247, 251, 251, 0), rgba(247, 251, 251, 0.96) 72%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .chip-scroll-hint {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 720;
+      }
+
+      .chip-row {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 2px 52px 6px 0;
+        scrollbar-width: none;
+      }
+
+      .chip-row::-webkit-scrollbar {
+        display: none;
+      }
+
+      .chip {
+        min-height: 42px;
+        flex: 0 0 auto;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--pine);
+        cursor: pointer;
+        font-size: 0.93rem;
+        font-weight: 720;
+        padding: 0 15px;
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .chip:hover {
+        transform: translateY(-1px);
+      }
+
+      .chip:focus-visible {
+        outline: 3px solid rgba(15, 118, 110, 0.24);
+        outline-offset: 2px;
+      }
+
+      .chip[aria-pressed="true"] {
+        border-color: var(--teal);
+        background: var(--teal);
+        color: #ffffff;
+      }
+
+      main {
+        width: min(100% - 28px, var(--container));
+        margin: 0 auto;
+        padding: 28px 0 54px;
+      }
+
+      .category-section + .category-section {
+        margin-top: 40px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .section-heading h2 {
+        color: var(--pine);
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        line-height: 1.05;
+      }
+
+      .section-count {
+        flex: 0 0 auto;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 680;
+      }
+
+      .places-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .place-card {
+        display: flex;
+        min-height: 100%;
+        flex-direction: column;
+        border: 1px solid rgba(216, 232, 229, 0.95);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.86)),
+          var(--surface);
+        box-shadow: var(--shadow-soft);
+        padding: 18px;
+      }
+
+      .place-card__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+
+      .badge {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: var(--teal-dark);
+        font-size: 0.78rem;
+        font-weight: 780;
+        padding: 4px 10px;
+        white-space: nowrap;
+      }
+
+      .place-number {
+        color: rgba(19, 32, 31, 0.26);
+        font-size: 0.86rem;
+        font-weight: 800;
+      }
+
+      .place-card h3 {
+        color: #102827;
+        font-size: 1.18rem;
+        line-height: 1.18;
+      }
+
+      .place-card__description {
+        margin-top: 10px;
+        color: #415552;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tag {
+        border-radius: 999px;
+        background: rgba(233, 138, 84, 0.12);
+        color: #8a4528;
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 5px 9px;
+      }
+
+      .map-link {
+        display: inline-flex;
+        min-height: 32px;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12px;
+        border: 1px solid rgba(15, 118, 110, 0.22);
+        border-radius: 999px;
+        background: rgba(15, 118, 110, 0.08);
+        color: var(--teal-dark);
+        font-size: 0.86rem;
+        font-weight: 780;
+        text-decoration: none;
+        padding: 0 10px;
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .map-link:hover {
+        border-color: rgba(15, 118, 110, 0.42);
+        background: rgba(15, 118, 110, 0.14);
+        color: var(--teal);
+        transform: translateY(-1px);
+      }
+
+      .map-link:focus-visible {
+        outline: 3px solid rgba(15, 118, 110, 0.24);
+        outline-offset: 3px;
+      }
+
+      .empty-state {
+        border: 1px dashed rgba(15, 118, 110, 0.38);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--muted);
+        padding: 26px;
+        text-align: center;
+      }
+
+      .empty-state strong {
+        display: block;
+        color: var(--pine);
+        font-size: 1.15rem;
+      }
+
+      .empty-state span {
+        display: block;
+        margin-top: 6px;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .footer__inner {
+        width: min(100% - 28px, var(--container));
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: 0.92rem;
+        padding: 24px 0 30px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        padding: 0;
+      }
+
+      @media (min-width: 720px) {
+        .hero {
+          min-height: 440px;
+        }
+
+        .hero__content {
+          min-height: 440px;
+          padding-bottom: 54px;
+        }
+
+        .controls__inner {
+          display: grid;
+          grid-template-columns: minmax(280px, 390px) 1fr;
+          gap: 16px;
+          align-items: start;
+          padding: 14px 0;
+        }
+
+        .chip-row-wrap {
+          margin-top: 0;
+        }
+
+        .chip-row-wrap::after,
+        .chip-scroll-hint {
+          display: none;
+        }
+
+        .chip-row {
+          margin-top: 0;
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          overflow: visible;
+          padding: 0;
+        }
+
+        main {
+          padding-top: 42px;
+        }
+
+        .places-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px;
+        }
+      }
+
+      @media (min-width: 1040px) {
+        .places-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .place-card {
+          padding: 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <img
+        class="hero__image"
+        src="assets/gelendzhik-hero.jpg"
+        width="1713"
+        height="918"
+        alt="Побережье Геленджика с морем и зелёными холмами"
+        decoding="async"
+      />
+      <div class="hero__content">
+        <h1>Гид по Геленджику</h1>
+        <p class="hero__subtitle">
+          Личная подборка мест: природа, рестораны, кофейни, пляжи, детские места, спорт и полезные точки.
+        </p>
+      </div>
+    </header>
+
+    <section class="controls" id="controls" aria-label="Поиск и фильтры">
+      <div class="controls__inner">
+        <label class="search" for="placeSearch">
+          <span class="sr-only">Поиск по местам</span>
+          <input
+            class="search__input"
+            id="placeSearch"
+            type="search"
+            autocomplete="off"
+            placeholder="Найти место, еду или прогулку"
+          />
+        </label>
+        <div class="chip-row-wrap">
+          <nav class="chip-row" id="categoryFilters" aria-label="Фильтр по категориям"></nav>
+        </div>
+        <p class="chip-scroll-hint" aria-hidden="true">Прокрутите категории вправо</p>
+      </div>
+    </section>
+
+    <main id="content">
+      <div id="guideSections" aria-live="polite"></div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">Личный гид по Геленджику. Ссылки открываются в Яндекс.Картах.</div>
+    </footer>
+
+    <script>
+      const categories = [
+        { id: "nature", label: "Природа", chipLabel: "Природа" },
+        { id: "restaurants", label: "Рестораны", chipLabel: "Рестораны" },
+        { id: "coffee", label: "Кофейни", chipLabel: "Кофейни" },
+        { id: "beaches", label: "Пляжи", chipLabel: "Пляжи" },
+        { id: "parks", label: "Парки", chipLabel: "Парки" },
+        { id: "kids", label: "Детям", chipLabel: "Детям" },
+        { id: "sport", label: "Спортивные площадки", chipLabel: "Спорт" },
+        { id: "other", label: "Разное", chipLabel: "Разное" },
+      ];
+
+      function yandexMapSearchUrl(query) {
+        return `https://yandex.com/maps/10990/gelendzhik/search/${encodeURIComponent(query)}/`;
+      }
+
+      const places = [
+        {
+          id: "zhane-waterfalls",
+          title: "Водопады на реке Жане",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Наша любимая тропа с водопадами и красивым лесом. Ехать примерно 15-20 минут на машине. Если не было дождей, там приятно гулять. До большого водопада идти далековато, и не все доходят, но маленькие водопады тоже красивые.",
+          tags: ["прогулка", "лес", "водопады"],
+          priority: 1,
+        },
+        {
+          id: "mountain-cross",
+          title: "Гора с крестом",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Можно подняться пешком по тропе или на канатной дороге, а потом погулять по горе. Это тот самый крест, который видно из окна.",
+          tags: ["вид", "тропа", "канатная дорога"],
+          priority: 2,
+        },
+        {
+          id: "terrenkur-markhot",
+          title: "Терренкур Маркхот",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Подняться к старой надписи «Геленджик» - направо от «Олимпа» - по серпантину и погулять по маршруту.",
+          tags: ["маршрут", "серпантин", "вид"],
+          priority: 3,
+        },
+        {
+          id: "golubaya-bezdna",
+          title: "Голубая бездна",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Красивое место между Дивноморским и Джанхотом: виноградники, сосновый лес и спуск с обрыва к морю.",
+          mapUrl: "https://yandex.com/maps/org/golubaya_bezdna/161229141776?si=8v12cb9mk3216hmppp2516vcb0",
+          tags: ["море", "сосны", "виноградники"],
+          priority: 4,
+        },
+        {
+          id: "dzhankhot",
+          title: "Джанхот",
+          category: "nature",
+          categoryLabel: "Природа",
+          description: "Небольшой посёлок с пляжем, лесом и музеем Короленко - красивым домом с историей.",
+          tags: ["пляж", "лес", "музей"],
+          priority: 5,
+        },
+        {
+          id: "praskoveevka-parus-rock",
+          title: "Прасковеевка и скала Парус",
+          category: "nature",
+          categoryLabel: "Природа",
+          description: "Место у моря со знаменитой скалой Парус и лесом вокруг.",
+          tags: ["море", "скала", "лес"],
+          priority: 6,
+        },
+        {
+          id: "rio-shipwreck",
+          title: "Сухогруз «Рио»",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Можно прогуляться до сухогруза «Рио» за Кабардинкой. Там есть природа, немного экстрима и большой корабль.",
+          tags: ["корабль", "прогулка", "Кабардинка"],
+          priority: 7,
+        },
+        {
+          id: "golubaya-bezdna-beach",
+          title: "Пляж «Голубая бездна»",
+          category: "nature",
+          categoryLabel: "Природа",
+          description: "Красивое место у открытого моря.",
+          tags: ["пляж", "открытое море"],
+          priority: 8,
+        },
+        {
+          id: "old-park-kabardinka",
+          title: "Старый парк в Кабардинке",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Очень красивое место: архитектура, скульптуры, музыка, художники и атмосферные прогулки.",
+          tags: ["архитектура", "прогулка", "Кабардинка"],
+          priority: 9,
+        },
+        {
+          id: "chateau-de-talu",
+          title: "Шато де Талю",
+          category: "nature",
+          categoryLabel: "Природа",
+          description:
+            "Винодельня в Геленджике. Можно сходить на экскурсию и дегустацию - хороший вариант для разнообразия.",
+          tags: ["винодельня", "экскурсия", "дегустация"],
+          priority: 10,
+        },
+        {
+          id: "abrau-durso",
+          title: "Абрау-Дюрсо",
+          category: "nature",
+          categoryLabel: "Природа",
+          description: "Озеро Абрау и винодельня под Новороссийском. Ещё рекомендую лодочки.",
+          tags: ["озеро", "винодельня", "лодочки"],
+          priority: 11,
+        },
+        {
+          id: "the-mediterra-green",
+          title: "The Mediterra Green",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description:
+            "Очень вкусная итальянская кухня. У них несколько заведений в Геленджике, но называются они по-разному - остальные можно посмотреть на сайте или в картах.",
+          tags: ["итальянская кухня", "ужин"],
+          priority: 1,
+        },
+        {
+          id: "vienskiy-dvorik",
+          title: "Венский дворик",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Очень вкусная кухня.",
+          tags: ["еда"],
+          priority: 2,
+        },
+        {
+          id: "syrovarnya-rybinsk",
+          title: "Сыроварня и Рыбинск",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Новиковские рестораны. Красиво и вкусно, есть пляжная зона.",
+          tags: ["пляжная зона", "ужин"],
+          priority: 3,
+        },
+        {
+          id: "sushi-rolls",
+          title: "Суши и роллы",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Вкусные суши и роллы в Геленджике мне пока не попадались.",
+          tags: ["суши", "роллы"],
+          priority: 4,
+        },
+        {
+          id: "mangal-house",
+          title: "Мангал House",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Сам ресторан не очень, но есть доставка шашлыка: очень свежий и вкусный.",
+          tags: ["шашлык", "доставка"],
+          priority: 5,
+        },
+        {
+          id: "stanichniy-dvorik",
+          title: "Станичный дворик",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Вкусная кухня в стиле «борщ + самогон».",
+          tags: ["борщ", "самогон"],
+          priority: 6,
+        },
+        {
+          id: "roni-oyster",
+          title: "Roni Oyster",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Морепродукты и устрицы. Нормальное место.",
+          tags: ["морепродукты", "устрицы"],
+          priority: 7,
+        },
+        {
+          id: "santa-fe",
+          title: "Santa Fe",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Итальянская кухня, вкусно и приятный интерьер.",
+          tags: ["итальянская кухня", "интерьер"],
+          priority: 8,
+        },
+        {
+          id: "prichal-93",
+          title: "Причал 93",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Стильное место, вкусная еда.",
+          tags: ["стильно", "еда"],
+          priority: 9,
+        },
+        {
+          id: "tom-yam",
+          title: "Том Ям",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Вкусный том-ям и азиатская кухня. Вид - топ.",
+          tags: ["азиатская кухня", "вид"],
+          priority: 10,
+        },
+        {
+          id: "laguna-club-restaurant",
+          title: "Laguna Club Restaurant",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Ресторан с бассейном и выходом к морю.",
+          tags: ["бассейн", "море"],
+          priority: 11,
+        },
+        {
+          id: "mayak",
+          title: "Маяк",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Ресторан у маяка: хороший вид и вечеринки на закате.",
+          tags: ["вид", "закат", "вечеринки"],
+          priority: 12,
+        },
+        {
+          id: "dacha",
+          title: "Дача",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Тихое место в центре, комфортный ценник.",
+          tags: ["центр", "тихо"],
+          priority: 13,
+        },
+        {
+          id: "edison",
+          title: "Эдисон",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Паб с большим выбором настоек.",
+          tags: ["паб", "настойки"],
+          priority: 14,
+        },
+        {
+          id: "sicilia",
+          title: "Сицилия",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description: "Семейный итальянский ресторан.",
+          tags: ["семейный", "итальянская кухня"],
+          priority: 15,
+        },
+        {
+          id: "tsekh-nashego-goroda",
+          title: "Цех нашего города",
+          category: "restaurants",
+          categoryLabel: "Рестораны",
+          description:
+            "Вниз по Горной улице. Вход платный, меню интересное, но стало хуже, поэтому сейчас туда не хожу.",
+          tags: ["Горная улица", "меню"],
+          priority: 16,
+        },
+        {
+          id: "bereg-kofe",
+          title: "Берег кофе",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Лучший кофе на мой вкус.",
+          tags: ["кофе"],
+          priority: 1,
+        },
+        {
+          id: "surf-library-lilly",
+          title: "Surf Coffee, «Библиотека кофе», Lilly",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Несколько кофеен рядом: можно выбрать по настроению.",
+          tags: ["кофе", "выбор"],
+          priority: 2,
+        },
+        {
+          id: "elephant",
+          title: "Elephant",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Кофейня и чайная в центре, у рынка. Вкусно и красиво.",
+          tags: ["чай", "центр", "рынок"],
+          priority: 3,
+        },
+        {
+          id: "mandelstam-cat",
+          title: "Кофе «Кошка Мандельштам»",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "И похожие места - на любителя.",
+          tags: ["кофе"],
+          priority: 4,
+        },
+        {
+          id: "lumen",
+          title: "Lumen",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Атмосферное место в Дивноморском с арт-тусовкой.",
+          tags: ["Дивноморское", "арт"],
+          priority: 5,
+        },
+        {
+          id: "gelatiamo",
+          title: "GelaTiAmo",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Лучшее итальянское мороженое и кофе.",
+          tags: ["мороженое", "кофе"],
+          priority: 6,
+        },
+        {
+          id: "el-pan",
+          title: "Эль Пан",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Вкусная еда и десерты.",
+          tags: ["десерты", "еда"],
+          priority: 7,
+        },
+        {
+          id: "keks",
+          title: "Кекс",
+          category: "coffee",
+          categoryLabel: "Кофейни",
+          description: "Вид на море и невероятный лимонный тарт.",
+          tags: ["вид на море", "лимонный тарт"],
+          priority: 8,
+        },
+        {
+          id: "metropol-beach",
+          title: "Метрополь",
+          category: "beaches",
+          categoryLabel: "Пляжи",
+          description: "Слева от него есть городской пляж. Самая чистая вода в бухте.",
+          tags: ["чистая вода", "бухта"],
+          priority: 1,
+        },
+        {
+          id: "central-sand-beaches",
+          title: "Центральные песчаные пляжи",
+          category: "beaches",
+          categoryLabel: "Пляжи",
+          description: "Людей много, вода не самая чистая, зато песочек.",
+          tags: ["песок", "центр"],
+          priority: 2,
+        },
+        {
+          id: "krasnaya-talka-beach",
+          title: "Пляж санатория «Красная Талка»",
+          category: "beaches",
+          categoryLabel: "Пляжи",
+          description: "Самый близкий и оборудован всем необходимым. Можно заходить бесплатно, если без услуг.",
+          tags: ["оборудованный", "близко"],
+          priority: 3,
+        },
+        {
+          id: "rakushka-divnomorskaya",
+          title: "«Ракушка» Дивноморская",
+          category: "beaches",
+          categoryLabel: "Пляжи",
+          description: "Маленький чистый пляжик с едой и напитками, слева от «Красной Талки».",
+          tags: ["чистый пляж", "еда", "напитки"],
+          priority: 4,
+        },
+        {
+          id: "beaches-right-left",
+          title: "Пляжи направо и налево",
+          category: "beaches",
+          categoryLabel: "Пляжи",
+          description: "В обе стороны от центра много разных пляжей, в целом плюс-минус похожих.",
+          tags: ["центр", "прогулка"],
+          priority: 5,
+        },
+        {
+          id: "open-sea-spinka-delfina",
+          title: "Открытое море / бывшая «Спинка дельфина»",
+          category: "beaches",
+          categoryLabel: "Пляжи",
+          description: "Оборудованный пляж с очень чистым морем. Тонкий мыс.",
+          mapUrl: "https://yandex.com/maps/org/plyazh_ulyotny_bereg/205481913197?si=8v12cb9mk3216hmppp2516vcb0",
+          tags: ["чистое море", "Тонкий мыс"],
+          priority: 6,
+        },
+        {
+          id: "molodezhny-park",
+          title: "Молодёжный парк",
+          category: "parks",
+          categoryLabel: "Парки",
+          description: "Новый современный парк с гамаками.",
+          mapUrl: "https://yandex.com/maps/org/molodyozhny_park/27759735661?si=8v12cb9mk3216hmppp2516vcb0",
+          tags: ["гамаки", "парк"],
+          priority: 1,
+        },
+        {
+          id: "vrungel-park",
+          title: "Парк Врунгеля",
+          category: "parks",
+          categoryLabel: "Парки",
+          description: "Сейчас на ремонте, но по лесу можно погулять.",
+          tags: ["лес", "прогулка"],
+          priority: 2,
+        },
+        {
+          id: "kontinent",
+          title: "Континент",
+          category: "kids",
+          categoryLabel: "Детям",
+          description:
+            "Большой детский развлекательный комплекс с батутами, игровыми зонами и активностями для детей разных возрастов.",
+          tags: ["батуты", "игровые зоны"],
+          priority: 1,
+        },
+        {
+          id: "tut-batut-toystation",
+          title: "Тут-Батут и ToyStation",
+          category: "kids",
+          categoryLabel: "Детям",
+          description:
+            "Батуты, лабиринты, игровые автоматы и развлечения для детей. Хороший вариант, если нужно занять ребёнка на несколько часов.",
+          tags: ["батуты", "лабиринты", "автоматы"],
+          priority: 2,
+        },
+        {
+          id: "central-beach-playground",
+          title: "Детская площадка у Центрального пляжа",
+          category: "kids",
+          categoryLabel: "Детям",
+          description:
+            "Большая современная площадка рядом с памятником Лермонтову. Находится в тени деревьев, среди зелени. Подходит для детей практически любого возраста.",
+          tags: ["площадка", "Центральный пляж", "тень"],
+          priority: 3,
+        },
+        {
+          id: "central-park-culture-rest",
+          title: "Центральный парк культуры и отдыха",
+          category: "kids",
+          categoryLabel: "Детям",
+          description:
+            "Колесо обозрения, перевёрнутый дом, аттракционы, картинг, верёвочные маршруты, тир и множество других развлечений для всей семьи.",
+          tags: ["аттракционы", "картинг", "семья"],
+          priority: 4,
+        },
+        {
+          id: "limpopo-sport-ground",
+          title: "Спортивная площадка на набережной рядом с детской площадкой «Лимпопо»",
+          category: "sport",
+          categoryLabel: "Спортивные площадки",
+          description:
+            "Классная спортивная площадка на набережной между улицами Красивая и Маячная. Ориентир - детская площадка «Лимпопо». Удобное место: дети могут играть рядом, а взрослые - потренироваться.",
+          tags: ["набережная", "тренировка", "Лимпопо"],
+          priority: 1,
+        },
+        {
+          id: "southern-basketball-court",
+          title: "Баскетбольная площадка в Южном районе",
+          category: "sport",
+          categoryLabel: "Спортивные площадки",
+          description: "Открытая баскетбольная площадка рядом с ЖК «Столичный квартал».",
+          mapUrl:
+            "https://yandex.com/maps/org/dvorovaya_ploshchadka_divnomorskaya_37_k20/7181650768?si=8v12cb9mk3216hmppp2516vcb0",
+          tags: ["баскетбол", "Южный район"],
+          priority: 2,
+        },
+        {
+          id: "tennis-courts",
+          title: "Теннисные корты",
+          category: "sport",
+          categoryLabel: "Спортивные площадки",
+          description:
+            "В Геленджике есть теннисные корты, но я там не был, поэтому конкретный вариант рекомендовать не могу. Лучше выбрать по Яндекс.Картам.",
+          tags: ["теннис", "корты"],
+          priority: 3,
+        },
+        {
+          id: "golden-bay-waterpark",
+          title: "Аквапарк «Золотая Бухта»",
+          category: "other",
+          categoryLabel: "Разное",
+          description: "Большой аквапарк.",
+          tags: ["аквапарк"],
+          priority: 1,
+        },
+        {
+          id: "wine-city",
+          title: "Винный город",
+          category: "other",
+          categoryLabel: "Разное",
+          description: "Новое место с музеем и рестораном.",
+          tags: ["музей", "ресторан"],
+          priority: 2,
+        },
+        {
+          id: "beach-volleyball",
+          title: "Волейбол на пляжах",
+          category: "other",
+          categoryLabel: "Разное",
+          description: "Можно поискать площадки на пляжах.",
+          tags: ["волейбол", "пляжи"],
+          priority: 3,
+        },
+        {
+          id: "weekend-fair",
+          title: "Ярмарка выходного дня",
+          category: "other",
+          categoryLabel: "Разное",
+          description: "Вкусные дары Кубани от местных фермеров.",
+          tags: ["фермеры", "Кубань"],
+          priority: 4,
+        },
+        {
+          id: "central-market",
+          title: "Центральный рынок",
+          category: "other",
+          categoryLabel: "Разное",
+          description: "Свежая пахлава и чурчхела, орехи, фрукты и специи.",
+          tags: ["пахлава", "чурчхела", "фрукты"],
+          priority: 5,
+        },
+      ];
+
+      const placesWithoutMap = new Set(["sushi-rolls"]);
+      const mapSearchQueries = new Map(
+        Object.entries({
+          "zhane-waterfalls": "Водопады на реке Жане Геленджик",
+          "mountain-cross": "Гора с крестом Геленджик",
+          "terrenkur-markhot": "Терренкур Маркхот Геленджик",
+          dzhankhot: "Джанхот Геленджик",
+          "praskoveevka-parus-rock": "Прасковеевка скала Парус",
+          "rio-shipwreck": "Сухогруз Рио Кабардинка",
+          "golubaya-bezdna-beach": "Пляж Голубая бездна Геленджик",
+          "old-park-kabardinka": "Старый парк Кабардинка",
+          "chateau-de-talu": "Шато де Талю Геленджик",
+          "abrau-durso": "Абрау-Дюрсо",
+          "syrovarnya-rybinsk": "Сыроварня Рыбинск Геленджик",
+          "surf-library-lilly": "Surf Coffee Библиотека кофе Lilly Геленджик",
+          "mandelstam-cat": "Кошка Мандельштам кофе Геленджик",
+          "metropol-beach": "Пляж Метрополь Геленджик",
+          "central-sand-beaches": "Центральный пляж Геленджик",
+          "krasnaya-talka-beach": "Пляж санатория Красная Талка Геленджик",
+          "rakushka-divnomorskaya": "Ракушка Дивноморская пляж Геленджик",
+          "beaches-right-left": "Пляжи Геленджика",
+          "vrungel-park": "Парк Врунгеля Геленджик",
+          kontinent: "Континент детский развлекательный комплекс Геленджик",
+          "tut-batut-toystation": "Тут-Батут ToyStation Геленджик",
+          "central-beach-playground": "Детская площадка Центральный пляж Геленджик",
+          "central-park-culture-rest": "Центральный парк культуры и отдыха Геленджик",
+          "limpopo-sport-ground": "Спортивная площадка Лимпопо Геленджик",
+          "tennis-courts": "Теннисные корты Геленджик",
+          "beach-volleyball": "Пляжный волейбол Геленджик",
+          "weekend-fair": "Ярмарка выходного дня Геленджик",
+          "central-market": "Центральный рынок Геленджик",
+        }),
+      );
+
+      for (const place of places) {
+        if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
+          place.mapUrl = yandexMapSearchUrl(mapSearchQueries.get(place.id) || `${place.title} Геленджик`);
+        }
+      }
+
+      const categoryOrder = new Map(categories.map((category, index) => [category.id, index]));
+      const categoryById = new Map(categories.map((category) => [category.id, category]));
+      const state = {
+        category: "all",
+        query: "",
+      };
+
+      function normalizeText(value) {
+        return String(value || "")
+          .toLocaleLowerCase("ru-RU")
+          .replaceAll("ё", "е")
+          .trim();
+      }
+
+      function placeSearchText(place) {
+        return normalizeText([place.title, place.description, place.categoryLabel, ...(place.tags || [])].join(" "));
+      }
+
+      function filterPlaces(options = {}) {
+        const selectedCategory = options.category || "all";
+        const query = normalizeText(options.query);
+
+        return places.filter((place) => {
+          const matchesCategory = selectedCategory === "all" || place.category === selectedCategory;
+          const matchesQuery = !query || placeSearchText(place).includes(query);
+          return matchesCategory && matchesQuery;
+        });
+      }
+
+      function sortPlaces(items) {
+        return [...items].sort((a, b) => {
+          const categoryDifference = categoryOrder.get(a.category) - categoryOrder.get(b.category);
+          if (categoryDifference !== 0) {
+            return categoryDifference;
+          }
+
+          const priorityDifference = a.priority - b.priority;
+          if (priorityDifference !== 0) {
+            return priorityDifference;
+          }
+
+          return a.title.localeCompare(b.title, "ru");
+        });
+      }
+
+      function groupPlaces(items) {
+        const grouped = new Map();
+
+        for (const place of sortPlaces(items)) {
+          if (!grouped.has(place.category)) {
+            grouped.set(place.category, []);
+          }
+          grouped.get(place.category).push(place);
+        }
+
+        return categories
+          .filter((category) => grouped.has(category.id))
+          .map((category) => ({
+            category,
+            places: grouped.get(category.id),
+          }));
+      }
+
+      function createNode(tagName, className, text) {
+        const node = document.createElement(tagName);
+        if (className) {
+          node.className = className;
+        }
+        if (text !== undefined) {
+          node.textContent = text;
+        }
+        return node;
+      }
+
+      function scrollToResultsStart() {
+        const content = document.getElementById("content");
+        const controls = document.getElementById("controls");
+
+        if (!content || typeof window.scrollTo !== "function") {
+          return;
+        }
+
+        const currentScroll = window.scrollY || window.pageYOffset || 0;
+        const contentTop = content.getBoundingClientRect().top;
+        const controlsHeight = controls?.getBoundingClientRect().height || 0;
+        const breathingRoom = 16;
+
+        window.scrollTo({
+          top: Math.max(0, currentScroll + contentTop - controlsHeight - breathingRoom),
+          behavior: "smooth",
+        });
+      }
+
+      function renderCategoryChips() {
+        const container = document.getElementById("categoryFilters");
+        container.innerHTML = "";
+
+        const filters = [{ id: "all", chipLabel: "Все" }, ...categories];
+        for (const filter of filters) {
+          const button = createNode("button", "chip", filter.chipLabel);
+          button.type = "button";
+          button.dataset.category = filter.id;
+          button.setAttribute("aria-pressed", String(state.category === filter.id));
+          button.addEventListener("click", () => {
+            state.category = filter.id;
+            renderCategoryChips();
+            renderGuide();
+            scrollToResultsStart();
+          });
+          container.appendChild(button);
+        }
+      }
+
+      function renderTags(place, card) {
+        if (!place.tags || place.tags.length === 0) {
+          return;
+        }
+
+        const tagList = createNode("ul", "tags");
+        tagList.setAttribute("aria-label", `Теги: ${place.title}`);
+        for (const tag of place.tags) {
+          tagList.appendChild(createNode("li", "tag", tag));
+        }
+        card.appendChild(tagList);
+      }
+
+      function renderMapLink(place, card) {
+        if (!place.mapUrl) {
+          return;
+        }
+
+        const link = createNode("a", "map-link", "Карта");
+        link.href = place.mapUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", `Открыть на карте: ${place.title}`);
+        card.appendChild(link);
+      }
+
+      function renderPlaceCard(place) {
+        const card = createNode("article", "place-card");
+        const top = createNode("div", "place-card__top");
+        top.append(
+          createNode("span", "badge", place.categoryLabel),
+          createNode("span", "place-number", String(place.priority).padStart(2, "0")),
+        );
+
+        const title = createNode("h3", "", place.title);
+        const description = createNode("p", "place-card__description", place.description);
+
+        card.append(top, title, description);
+        renderTags(place, card);
+        renderMapLink(place, card);
+
+        return card;
+      }
+
+      function renderCategorySection(group) {
+        const section = createNode("section", "category-section");
+        section.id = group.category.id;
+
+        const heading = createNode("div", "section-heading");
+        heading.append(
+          createNode("h2", "", group.category.label),
+          createNode("span", "section-count", `${group.places.length} ${getPlaceWord(group.places.length)}`),
+        );
+
+        const grid = createNode("div", "places-grid");
+        for (const place of group.places) {
+          grid.appendChild(renderPlaceCard(place));
+        }
+
+        section.append(heading, grid);
+        return section;
+      }
+
+      function getPlaceWord(count) {
+        const lastDigit = count % 10;
+        const lastTwoDigits = count % 100;
+
+        if (lastDigit === 1 && lastTwoDigits !== 11) {
+          return "место";
+        }
+        if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 12 || lastTwoDigits > 14)) {
+          return "места";
+        }
+        return "мест";
+      }
+
+      function renderEmptyState(container) {
+        const empty = createNode("div", "empty-state");
+        empty.append(
+          createNode("strong", "", "Ничего не найдено"),
+          createNode("span", "", "Попробуйте изменить запрос или выбрать другую категорию."),
+        );
+        container.appendChild(empty);
+      }
+
+      function renderGuide() {
+        const container = document.getElementById("guideSections");
+        const filteredPlaces = filterPlaces(state);
+        const groups = groupPlaces(filteredPlaces);
+        container.innerHTML = "";
+
+        if (groups.length === 0) {
+          renderEmptyState(container);
+          return;
+        }
+
+        for (const group of groups) {
+          container.appendChild(renderCategorySection(group));
+        }
+      }
+
+      function buildJsonLd() {
+        return {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Гид по Геленджику",
+          description:
+            "Личная подборка мест: природа, рестораны, кофейни, пляжи, детские места, спорт и полезные точки.",
+          inLanguage: "ru",
+          mainEntity: {
+            "@type": "ItemList",
+            numberOfItems: places.length,
+            itemListElement: sortPlaces(places).map((place, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "Place",
+                name: place.title,
+                description: place.description,
+                category: place.categoryLabel,
+                ...(place.mapUrl ? { url: place.mapUrl } : {}),
+              },
+            })),
+          },
+        };
+      }
+
+      function updateJsonLd() {
+        const jsonLd = document.getElementById("jsonLd");
+        if (jsonLd) {
+          jsonLd.textContent = JSON.stringify(buildJsonLd(), null, 2);
+        }
+      }
+
+      function initGuide() {
+        renderCategoryChips();
+        renderGuide();
+        updateJsonLd();
+
+        const searchInput = document.getElementById("placeSearch");
+        searchInput.addEventListener("input", (event) => {
+          state.query = event.target.value;
+          renderGuide();
+        });
+      }
+
+      window.GelendzhikGuide = {
+        categories,
+        places,
+        filterPlaces,
+        groupPlaces,
+        sortPlaces,
+      };
+
+      document.addEventListener("DOMContentLoaded", initGuide);
+    </script>
+  </body>
+</html>
