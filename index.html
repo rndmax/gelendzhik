@@ -133,12 +133,54 @@
         line-height: 0.94;
       }
 
-      .hero__subtitle {
+      .hero__intro {
         max-width: 740px;
         margin-top: 18px;
         color: rgba(255, 255, 255, 0.9);
         font-size: clamp(1rem, 4.6vw, 1.32rem);
         line-height: 1.45;
+      }
+
+      .hero__contacts {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .contact-link {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        font-size: 0.94rem;
+        font-weight: 780;
+        text-decoration: none;
+        padding: 0 14px 0 8px;
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .contact-link:hover {
+        border-color: rgba(255, 255, 255, 0.46);
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateY(-1px);
+      }
+
+      .contact-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #ffffff;
+        object-fit: cover;
+        padding: 2px;
       }
 
       .controls {
@@ -541,9 +583,34 @@
       />
       <div class="hero__content">
         <h1>Гид по Геленджику</h1>
-        <p class="hero__subtitle">
-          Личная подборка мест: природа, рестораны, кофейни, пляжи, детские места, спорт и полезные точки.
+        <p class="hero__intro">
+          Привет, меня зовут Макс Коревский. Я посетил более 20 стран, и Геленджик — одно из моих любимых мест
+          на нашей планете. С удовольствием поделюсь классными местами.
         </p>
+        <div class="hero__contacts" aria-label="Ссылки на мессенджеры">
+          <a
+            class="contact-link"
+            href="https://t.me/rndmax"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-contact="telegram"
+            aria-label="Написать в Telegram"
+          >
+            <img class="contact-icon" src="assets/telegram-icon.svg" width="28" height="28" alt="" aria-hidden="true" />
+            <span>Telegram</span>
+          </a>
+          <a
+            class="contact-link"
+            href="https://max.ru/u/f9LHodD0cOI0lvYzQ9ThTrBjnWMKufaDsUgf2ce-Eeaq1_Uko599Mn9bR_c"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-contact="max"
+            aria-label="Написать в Max"
+          >
+            <img class="contact-icon" src="assets/max-icon.ico" width="28" height="28" alt="" aria-hidden="true" />
+            <span>Max</span>
+          </a>
+        </div>
       </div>
     </header>
 
