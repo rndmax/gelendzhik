@@ -115,11 +115,11 @@ test("hero introduces Max and shows contact links with app icons", () => {
   );
   assert.match(
     html,
-    /href="https:\/\/t\.me\/rndmax"[\s\S]*data-contact="telegram"[\s\S]*?>[\s\S]*?<img[\s\S]*src="assets\/telegram-icon\.svg"[\s\S]*?Telegram/,
+    /href="https:\/\/t\.me\/rndmax"[\s\S]*target="_blank"[\s\S]*rel="noopener noreferrer"[\s\S]*data-contact="telegram"[\s\S]*?>[\s\S]*?<img[\s\S]*src="assets\/telegram-icon\.svg"[\s\S]*?Telegram/,
   );
   assert.match(
     html,
-    /href="https:\/\/max\.ru\/u\/f9LHodD0cOI0lvYzQ9ThTrBjnWMKufaDsUgf2ce-Eeaq1_Uko599Mn9bR_c"[\s\S]*data-contact="max"[\s\S]*?>[\s\S]*?<img[\s\S]*src="assets\/max-icon\.ico"[\s\S]*?Max/,
+    /href="https:\/\/max\.ru\/u\/f9LHodD0cOI0lvYzQ9ThTrBjnWMKufaDsUgf2ce-Eeaq1_Uko599Mn9bR_c"[\s\S]*target="_blank"[\s\S]*rel="noopener noreferrer"[\s\S]*data-contact="max"[\s\S]*?>[\s\S]*?<img[\s\S]*src="assets\/max-icon\.ico"[\s\S]*?Max/,
   );
   assert.doesNotMatch(html, /aria-disabled="true"/);
   assert.doesNotMatch(html, /Контакты для связи/);
