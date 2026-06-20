@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
@@ -93,6 +93,23 @@ function loadGuideApi() {
   };
 }
 
+function collectNodes(node, predicate) {
+  const matches = [];
+  const visit = (current) => {
+    if (!current) {
+      return;
+    }
+    if (predicate(current)) {
+      matches.push(current);
+    }
+    for (const child of current.children || []) {
+      visit(child);
+    }
+  };
+  visit(node);
+  return matches;
+}
+
 test("page has SEO metadata and semantic landmarks", () => {
   assert.match(html, /<title>Гид по Геленджику<\/title>/);
   assert.match(html, /<meta[\s\S]*?name="description"/);
@@ -141,7 +158,34 @@ test("guide data keeps the requested categories and required fields", () => {
     assert.ok(place.category, `${place.id} should have a category`);
     assert.ok(place.categoryLabel, `${place.id} should have a category label`);
     assert.equal(typeof place.priority, "number", `${place.id} should have numeric priority`);
+    assert.ok(place.image, `${place.id} should have a card image`);
+    assert.ok(place.image.src.startsWith("assets/place-photos/"), `${place.id} should use a local card image`);
+    assert.ok(place.image.alt, `${place.id} should have image alt text`);
+    assert.ok(existsSync(new URL(place.image.src, import.meta.url)), `${place.id} image asset should exist`);
   }
+});
+
+test("place cards render compact lazy thumbnails", () => {
+  const guide = loadGuideApi();
+  const { documentListeners, elements } = guide.testHarness;
+
+  documentListeners.get("DOMContentLoaded")();
+
+  const cards = collectNodes(elements.get("guideSections"), (node) => node.className === "place-card");
+  assert.equal(cards.length, guide.places.length);
+
+  for (const card of cards) {
+    const [image] = collectNodes(card, (node) => node.className === "place-card__photo-image");
+    assert.ok(image, "expected every card to render a thumbnail image");
+    assert.equal(image.tagName, "img");
+    assert.match(image.src, /^assets\/place-photos\//);
+    assert.equal(image.loading, "lazy");
+    assert.equal(image.decoding, "async");
+    assert.ok(image.alt);
+  }
+
+  assert.match(html, /\.place-card__media/);
+  assert.match(html, /\.place-card__photo-image\s*{[\s\S]*?object-fit:\s*cover;/);
 });
 
 test("filters combine category, title, description, category label, and tags", () => {

@@ -360,12 +360,31 @@
         display: flex;
         min-height: 100%;
         flex-direction: column;
+        overflow: hidden;
         border: 1px solid rgba(216, 232, 229, 0.95);
         border-radius: var(--radius);
         background:
           linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.86)),
           var(--surface);
         box-shadow: var(--shadow-soft);
+      }
+
+      .place-card__media {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: var(--surface-soft);
+      }
+
+      .place-card__photo-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .place-card__body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
         padding: 18px;
       }
 
@@ -554,7 +573,7 @@
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
-        .place-card {
+        .place-card__body {
           padding: 20px;
         }
       }
@@ -1176,6 +1195,75 @@
       ];
 
       const placesWithoutMap = new Set(["sushi-rolls"]);
+      const categoryFallbackImages = {
+        nature: { file: "golubaya-bezdna.svg" },
+        restaurants: { file: "restaurant-interior.svg" },
+        coffee: { file: "coffee-counter.svg" },
+        beaches: { file: "bay-beach.svg" },
+        parks: { file: "park-hammocks.svg" },
+        kids: { file: "playground.svg" },
+        sport: { file: "calisthenics.svg" },
+        other: { file: "central-market.svg" },
+      };
+      const placeImageFiles = new Map(
+        Object.entries({
+          "zhane-waterfalls": "zhane-waterfalls.svg",
+          "mountain-cross": "mountain-cross.svg",
+          "terrenkur-markhot": "markhot-trail.svg",
+          "golubaya-bezdna": "golubaya-bezdna.svg",
+          dzhankhot: "dzhankhot.svg",
+          "praskoveevka-parus-rock": "sail-rock.svg",
+          "rio-shipwreck": "rio-shipwreck.svg",
+          "golubaya-bezdna-beach": "open-sea-beach.svg",
+          "old-park-kabardinka": "old-park.svg",
+          "chateau-de-talu": "winery.svg",
+          "abrau-durso": "abrau-lake.svg",
+          "the-mediterra-green": "italian-restaurant.svg",
+          "vienskiy-dvorik": "restaurant-interior.svg",
+          "syrovarnya-rybinsk": "cheese-fish.svg",
+          "sushi-rolls": "sushi.svg",
+          "mangal-house": "grill.svg",
+          "stanichniy-dvorik": "restaurant-interior.svg",
+          "roni-oyster": "seafood.svg",
+          "santa-fe": "italian-restaurant.svg",
+          "prichal-93": "sea-view-restaurant.svg",
+          "tom-yam": "sea-view-restaurant.svg",
+          "laguna-club-restaurant": "sea-view-restaurant.svg",
+          mayak: "sea-view-restaurant.svg",
+          dacha: "restaurant-interior.svg",
+          edison: "urban-restaurant.svg",
+          sicilia: "italian-restaurant.svg",
+          "tsekh-nashego-goroda": "urban-restaurant.svg",
+          "bereg-kofe": "coffee-counter.svg",
+          "surf-library-lilly": "coffee-counter.svg",
+          elephant: "tea-house.svg",
+          "mandelstam-cat": "coffee-counter.svg",
+          lumen: "coffee-counter.svg",
+          gelatiamo: "gelato.svg",
+          "el-pan": "dessert-cafe.svg",
+          keks: "dessert-cafe.svg",
+          "metropol-beach": "bay-beach.svg",
+          "central-sand-beaches": "sand-beach.svg",
+          "krasnaya-talka-beach": "bay-beach.svg",
+          "rakushka-divnomorskaya": "divnomorskaya-beach.svg",
+          "beaches-right-left": "pebble-beach.svg",
+          "open-sea-spinka-delfina": "open-sea-beach.svg",
+          "molodezhny-park": "park-hammocks.svg",
+          "vrungel-park": "forest-park.svg",
+          kontinent: "indoor-play.svg",
+          "tut-batut-toystation": "trampoline.svg",
+          "central-beach-playground": "playground.svg",
+          "central-park-culture-rest": "amusement-park.svg",
+          "limpopo-sport-ground": "calisthenics.svg",
+          "southern-basketball-court": "basketball.svg",
+          "tennis-courts": "tennis.svg",
+          "golden-bay-waterpark": "waterpark.svg",
+          "wine-city": "wine-museum.svg",
+          "beach-volleyball": "volleyball.svg",
+          "weekend-fair": "market-fair.svg",
+          "central-market": "central-market.svg",
+        }),
+      );
       const mapSearchQueries = new Map(
         Object.entries({
           "zhane-waterfalls": "Водопады на реке Жане Геленджик",
@@ -1210,6 +1298,12 @@
       );
 
       for (const place of places) {
+        const imageFile = placeImageFiles.get(place.id) || categoryFallbackImages[place.category]?.file;
+        place.image = {
+          src: `assets/place-photos/${imageFile}`,
+          alt: `Миниатюра места: ${place.title}`,
+        };
+
         if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
           place.mapUrl = yandexMapSearchUrl(mapSearchQueries.get(place.id) || `${place.title} Геленджик`);
         }
@@ -1356,6 +1450,15 @@
 
       function renderPlaceCard(place) {
         const card = createNode("article", "place-card");
+        const media = createNode("div", "place-card__media");
+        const image = createNode("img", "place-card__photo-image");
+        image.src = place.image.src;
+        image.alt = place.image.alt;
+        image.loading = "lazy";
+        image.decoding = "async";
+        media.appendChild(image);
+
+        const body = createNode("div", "place-card__body");
         const top = createNode("div", "place-card__top");
         top.append(
           createNode("span", "badge", place.categoryLabel),
@@ -1365,9 +1468,10 @@
         const title = createNode("h3", "", place.title);
         const description = createNode("p", "place-card__description", place.description);
 
-        card.append(top, title, description);
-        renderTags(place, card);
-        renderMapLink(place, card);
+        body.append(top, title, description);
+        renderTags(place, body);
+        renderMapLink(place, body);
+        card.append(media, body);
 
         return card;
       }

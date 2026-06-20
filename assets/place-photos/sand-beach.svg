@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="sand beach thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7c487"/>
+      <stop offset="1" stop-color="#fff4df"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <path d="M0 232 C170 202 310 222 640 170 V400 H0Z" fill="#e98a54"/><path d="M0 300 C160 260 310 282 640 226 V400 H0Z" fill="#fff4df"/><circle cx="506" cy="92" r="44" fill="#ffe199"/><path d="M92 308 C140 260 198 264 248 310" fill="none" stroke="#f7c487" stroke-width="12" stroke-linecap="round"/>
+</svg>

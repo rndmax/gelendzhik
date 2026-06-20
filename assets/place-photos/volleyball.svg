@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="volleyball thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#9dd9e8"/>
+      <stop offset="1" stop-color="#e7f5f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <path d="M0 252 C170 218 310 230 640 186 V400 H0Z" fill="#e7f5f5"/><path d="M126 156 V322 M514 156 V322 M126 196 H514" stroke="#255d50" stroke-width="10" stroke-linecap="round"/><path d="M160 196 H480" stroke="#255d50" stroke-width="4" stroke-dasharray="10 12"/><circle cx="372" cy="142" r="38" fill="#9dd9e8"/><path d="M348 116 C376 132 392 152 400 178 M334 142 C364 144 388 154 410 174" stroke="#e7f5f5" stroke-width="5" opacity=".75"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="basketball thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f9e5a8"/>
+      <stop offset="1" stop-color="#fff8e7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <rect x="0" y="218" width="640" height="182" fill="#58a4b0"/><rect x="112" y="154" width="416" height="190" rx="14" fill="#fff8e7"/><path d="M112 250 H528 M320 154 V344" stroke="#f17a7e" stroke-width="8" opacity=".55"/><circle cx="320" cy="250" r="54" fill="none" stroke="#f17a7e" stroke-width="8" opacity=".55"/><circle cx="468" cy="210" r="32" fill="#f9e5a8"/>
+</svg>

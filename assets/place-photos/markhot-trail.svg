@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="markhot trail thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ccebd9"/>
+      <stop offset="1" stop-color="#f7fbfb"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <path d="M0 304 C120 236 220 246 342 180 C456 118 554 130 640 84 V400 H0Z" fill="#17493f"/><path d="M0 350 C190 284 338 312 640 226 V400 H0Z" fill="#4f9a69"/><path d="M92 300 C170 260 220 264 302 236" fill="none" stroke="#f7fbfb" stroke-width="10" stroke-linecap="round" opacity=".7"/><path d="M302 236 C370 208 410 190 500 160" fill="none" stroke="#f7fbfb" stroke-width="8" stroke-linecap="round" opacity=".62"/>
+</svg>

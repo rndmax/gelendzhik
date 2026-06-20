@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="waterpark thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#9dd9e8"/>
+      <stop offset="1" stop-color="#e7f5f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <rect x="0" y="246" width="640" height="154" fill="#2f86a6"/><path d="M198 80 C350 90 430 150 408 268" fill="none" stroke="#9dd9e8" stroke-width="34" stroke-linecap="round"/><path d="M272 84 C414 102 492 164 474 282" fill="none" stroke="#e7f5f5" stroke-width="22" stroke-linecap="round"/><path d="M0 318 C150 286 330 322 640 282 V400 H0Z" fill="#255d50" opacity=".45"/>
+</svg>

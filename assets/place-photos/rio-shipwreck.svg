@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="rio shipwreck thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#9dd9e8"/>
+      <stop offset="1" stop-color="#e7f5f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <path d="M0 252 C180 224 310 244 640 184 V400 H0Z" fill="#2f86a6"/><path d="M160 250 L506 210 L470 282 L202 310Z" fill="#9d5b3d"/><path d="M210 224 L486 194 L506 210 L160 250Z" fill="#d8b58a"/><rect x="258" y="184" width="92" height="40" fill="#ece7d7"/><rect x="368" y="168" width="64" height="48" fill="#ece7d7"/><path d="M0 316 C150 300 300 326 640 284 V400 H0Z" fill="#255d50" opacity=".55"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="wine museum thumbnail">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff3dc"/>
+      <stop offset="1" stop-color="#f8fbf7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <rect x="0" y="236" width="640" height="164" fill="#f8fbf7"/><path d="M258 126 H382 L360 248 C354 286 286 286 280 248Z" fill="#fff3dc"/><path d="M286 180 H354 L344 240 C340 260 300 260 296 240Z" fill="#7a345a"/><rect x="304" y="258" width="32" height="62" fill="#274740"/><path d="M260 320 H380" stroke="#274740" stroke-width="12" stroke-linecap="round"/><path d="M92 308 C188 260 280 268 392 232 C486 202 560 212 640 184" fill="none" stroke="#d76f42" stroke-width="14" opacity=".6"/>
+</svg>
