@@ -161,6 +161,7 @@ test("guide data keeps the requested categories and required fields", () => {
     assert.ok(place.image, `${place.id} should have a card image`);
     assert.ok(place.image.src.startsWith("assets/place-photos/"), `${place.id} should use a local card image`);
     assert.ok(place.image.alt, `${place.id} should have image alt text`);
+    assert.notEqual(place.image.alt, `Миниатюра места: ${place.title}`, `${place.id} image alt should not repeat title`);
     assert.ok(existsSync(new URL(place.image.src, import.meta.url)), `${place.id} image asset should exist`);
   }
 });
@@ -174,17 +175,20 @@ test("place cards render compact lazy thumbnails", () => {
   const cards = collectNodes(elements.get("guideSections"), (node) => node.className === "place-card");
   assert.equal(cards.length, guide.places.length);
 
-  for (const card of cards) {
+  for (const [index, card] of cards.entries()) {
+    const place = guide.sortPlaces(guide.places)[index];
     const [image] = collectNodes(card, (node) => node.className === "place-card__photo-image");
     assert.ok(image, "expected every card to render a thumbnail image");
     assert.equal(image.tagName, "img");
-    assert.match(image.src, /^assets\/place-photos\//);
+    assert.equal(image.src, place.image.src);
+    assert.equal(image.alt, place.image.alt);
+    assert.ok(existsSync(new URL(image.src, import.meta.url)), `${image.src} should exist`);
     assert.equal(image.loading, "lazy");
     assert.equal(image.decoding, "async");
-    assert.ok(image.alt);
   }
 
   assert.match(html, /\.place-card__media/);
+  assert.match(html, /\.place-card__media\s*{[\s\S]*?aspect-ratio:\s*8 \/ 5;/);
   assert.match(html, /\.place-card__photo-image\s*{[\s\S]*?object-fit:\s*cover;/);
 });
 

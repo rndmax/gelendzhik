@@ -371,7 +371,7 @@
 
       .place-card__media {
         width: 100%;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 8 / 5;
         background: var(--surface-soft);
       }
 
@@ -1196,14 +1196,57 @@
 
       const placesWithoutMap = new Set(["sushi-rolls"]);
       const categoryFallbackImages = {
-        nature: { file: "golubaya-bezdna.svg" },
-        restaurants: { file: "restaurant-interior.svg" },
-        coffee: { file: "coffee-counter.svg" },
-        beaches: { file: "bay-beach.svg" },
-        parks: { file: "park-hammocks.svg" },
-        kids: { file: "playground.svg" },
-        sport: { file: "calisthenics.svg" },
-        other: { file: "central-market.svg" },
+        nature: "golubaya-bezdna.svg",
+        restaurants: "restaurant-interior.svg",
+        coffee: "coffee-counter.svg",
+        beaches: "bay-beach.svg",
+        parks: "park-hammocks.svg",
+        kids: "playground.svg",
+        sport: "calisthenics.svg",
+        other: "central-market.svg",
+      };
+      const imageAltLabels = {
+        "abrau-lake.svg": "Иллюстрация: горное озеро и светлая линия берега.",
+        "amusement-park.svg": "Иллюстрация: семейные аттракционы и яркие игровые формы.",
+        "basketball.svg": "Иллюстрация: открытая спортивная площадка с мячом.",
+        "bay-beach.svg": "Иллюстрация: пляж в бухте с солнцем и спокойной водой.",
+        "calisthenics.svg": "Иллюстрация: уличная спортивная площадка для тренировок.",
+        "central-market.svg": "Иллюстрация: рыночные прилавки с фруктами и продуктами.",
+        "cheese-fish.svg": "Иллюстрация: ресторанная сервировка с тарелкой.",
+        "coffee-counter.svg": "Иллюстрация: чашка кофе на светлой стойке.",
+        "dessert-cafe.svg": "Иллюстрация: кофейня с десертами и теплым светом.",
+        "divnomorskaya-beach.svg": "Иллюстрация: небольшой чистый пляж у моря.",
+        "dzhankhot.svg": "Иллюстрация: приморский поселок с домами у лесистого склона.",
+        "forest-park.svg": "Иллюстрация: зеленый лесной парк с дорожкой.",
+        "gelato.svg": "Иллюстрация: кафе с мороженым и кофе.",
+        "golubaya-bezdna.svg": "Иллюстрация: высокий морской обрыв и синяя вода.",
+        "grill.svg": "Иллюстрация: огонь и гриль для шашлыка.",
+        "indoor-play.svg": "Иллюстрация: крытая детская игровая зона.",
+        "italian-restaurant.svg": "Иллюстрация: итальянский ресторан с террасой.",
+        "market-fair.svg": "Иллюстрация: фермерская ярмарка с фруктами.",
+        "markhot-trail.svg": "Иллюстрация: горный маршрут по хребту.",
+        "mountain-cross.svg": "Иллюстрация: белый крест на вершине горы.",
+        "old-park.svg": "Иллюстрация: парк с архитектурой и зелеными деревьями.",
+        "open-sea-beach.svg": "Иллюстрация: открытое море и скалистый берег.",
+        "park-hammocks.svg": "Иллюстрация: зеленый парк с гамаками.",
+        "pebble-beach.svg": "Иллюстрация: галечный пляж у моря.",
+        "playground.svg": "Иллюстрация: детская площадка в зелени.",
+        "restaurant-interior.svg": "Иллюстрация: ресторанная сервировка в спокойном интерьере.",
+        "rio-shipwreck.svg": "Иллюстрация: большой сухогруз у морского берега.",
+        "sail-rock.svg": "Иллюстрация: скала Парус у моря.",
+        "sand-beach.svg": "Иллюстрация: песчаный пляж и линия воды.",
+        "sea-view-restaurant.svg": "Иллюстрация: ресторан с видом на море.",
+        "seafood.svg": "Иллюстрация: блюдо с морепродуктами.",
+        "sushi.svg": "Иллюстрация: роллы на белой тарелке.",
+        "tea-house.svg": "Иллюстрация: чайная и кофейня рядом с зеленью.",
+        "tennis.svg": "Иллюстрация: теннисный корт на открытом воздухе.",
+        "trampoline.svg": "Иллюстрация: детские батуты и игровые модули.",
+        "urban-restaurant.svg": "Иллюстрация: городской ресторан или паб.",
+        "volleyball.svg": "Иллюстрация: пляжная волейбольная сетка и мяч.",
+        "waterpark.svg": "Иллюстрация: водная горка в аквапарке.",
+        "wine-museum.svg": "Иллюстрация: бокал вина и музейное пространство.",
+        "winery.svg": "Иллюстрация: виноградники и здание винодельни.",
+        "zhane-waterfalls.svg": "Иллюстрация: лесная тропа с водопадом.",
       };
       const placeImageFiles = new Map(
         Object.entries({
@@ -1298,10 +1341,10 @@
       );
 
       for (const place of places) {
-        const imageFile = placeImageFiles.get(place.id) || categoryFallbackImages[place.category]?.file;
+        const imageFile = placeImageFiles.get(place.id) || categoryFallbackImages[place.category] || categoryFallbackImages.other;
         place.image = {
           src: `assets/place-photos/${imageFile}`,
-          alt: `Миниатюра места: ${place.title}`,
+          alt: imageAltLabels[imageFile] || "Иллюстрация места.",
         };
 
         if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
