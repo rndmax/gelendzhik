@@ -142,8 +142,28 @@ test("hero introduces Max and shows contact links with app icons", () => {
   assert.doesNotMatch(html, /Контакты для связи/);
 });
 
+test("photo credits disclose licensed and generated image sources", () => {
+  const guide = loadGuideApi();
+  const licensedImages = new Map(
+    guide.places
+      .filter((place) => place.image.sourceType === "licensed")
+      .map((place) => [place.image.src, place.image]),
+  );
+
+  assert.equal(licensedImages.size, 3);
+  assert.match(html, /<details class="photo-credits">/);
+  assert.match(html, /Источники фото/);
+  for (const image of licensedImages.values()) {
+    assert.match(html, new RegExp(image.sourceUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(html, new RegExp(image.credit.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(html, new RegExp(image.license.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+  assert.match(html, /Остальные миниатюры — оригинальные сгенерированные изображения/);
+});
+
 test("guide data keeps the requested categories and required fields", () => {
   const guide = loadGuideApi();
+  const sourceTypes = new Set();
 
   assert.deepEqual(
     [...guide.categories].map((category) => category.id),
@@ -160,9 +180,37 @@ test("guide data keeps the requested categories and required fields", () => {
     assert.equal(typeof place.priority, "number", `${place.id} should have numeric priority`);
     assert.ok(place.image, `${place.id} should have a card image`);
     assert.ok(place.image.src.startsWith("assets/place-photos/"), `${place.id} should use a local card image`);
+    assert.match(place.image.src, /\.(jpe?g|webp)$/i, `${place.id} should use photo-like raster image`);
     assert.ok(place.image.alt, `${place.id} should have image alt text`);
     assert.notEqual(place.image.alt, `Миниатюра места: ${place.title}`, `${place.id} image alt should not repeat title`);
+    assert.match(place.image.sourceType, /^(licensed|generated)$/, `${place.id} should declare image provenance`);
+    sourceTypes.add(place.image.sourceType);
+    if (place.image.sourceType === "licensed") {
+      assert.ok(place.image.credit, `${place.id} licensed image should have credit`);
+      assert.ok(place.image.license, `${place.id} licensed image should have license`);
+      assert.ok(place.image.sourceUrl, `${place.id} licensed image should have source URL`);
+    }
     assert.ok(existsSync(new URL(place.image.src, import.meta.url)), `${place.id} image asset should exist`);
+  }
+
+  assert.deepEqual([...sourceTypes].sort(), ["generated", "licensed"]);
+});
+
+test("category fallback images are raster assets with provenance metadata", () => {
+  const guide = loadGuideApi();
+
+  for (const [category, imageFile] of Object.entries(guide.categoryFallbackImages)) {
+    assert.match(imageFile, /\.(jpe?g|webp)$/i, `${category} fallback should use a photo-like raster image`);
+    assert.ok(guide.imageAssets[imageFile], `${category} fallback should have image metadata`);
+    assert.match(
+      guide.imageAssets[imageFile].sourceType,
+      /^(licensed|generated)$/,
+      `${category} fallback should declare image provenance`,
+    );
+    assert.ok(
+      existsSync(new URL(`assets/place-photos/${imageFile}`, import.meta.url)),
+      `${category} fallback image asset should exist`,
+    );
   }
 });
 

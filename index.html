@@ -511,6 +511,31 @@
         padding: 24px 0 30px;
       }
 
+      .photo-credits {
+        margin-top: 12px;
+        color: var(--muted);
+      }
+
+      .photo-credits summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--pine);
+      }
+
+      .photo-credits ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+      }
+
+      .photo-credits li + li {
+        margin-top: 6px;
+      }
+
+      .photo-credits a {
+        color: var(--pine);
+        font-weight: 700;
+      }
+
       .sr-only {
         position: absolute;
         width: 1px;
@@ -657,7 +682,33 @@
     </main>
 
     <footer class="footer">
-      <div class="footer__inner">Личный гид по Геленджику. Ссылки открываются в Яндекс.Картах.</div>
+      <div class="footer__inner">
+        <div>Личный гид по Геленджику. Ссылки открываются в Яндекс.Картах.</div>
+        <details class="photo-credits">
+          <summary>Источники фото</summary>
+          <ul>
+            <li>
+              Бухта Геленджика:
+              <a href="https://commons.wikimedia.org/wiki/File:Gelendzhik_Bay.JPG" target="_blank" rel="noopener noreferrer"
+                >Vihljun, Public Domain</a
+              >.
+            </li>
+            <li>
+              Скала Парус:
+              <a href="https://commons.wikimedia.org/wiki/File:Parus_rock.jpg" target="_blank" rel="noopener noreferrer"
+                >Sergey S. Dukachev, CC BY-SA 3.0 / GFDL / CC BY 2.5</a
+              >.
+            </li>
+            <li>
+              Озеро Абрау:
+              <a href="https://commons.wikimedia.org/wiki/File:Abrau.jpg" target="_blank" rel="noopener noreferrer"
+                >Мартышка, Public Domain</a
+              >.
+            </li>
+            <li>Остальные миниатюры — оригинальные сгенерированные изображения для этого гида.</li>
+          </ul>
+        </details>
+      </div>
     </footer>
 
     <script>
@@ -1196,115 +1247,163 @@
 
       const placesWithoutMap = new Set(["sushi-rolls"]);
       const categoryFallbackImages = {
-        nature: "golubaya-bezdna.svg",
-        restaurants: "restaurant-interior.svg",
-        coffee: "coffee-counter.svg",
-        beaches: "bay-beach.svg",
-        parks: "park-hammocks.svg",
-        kids: "playground.svg",
-        sport: "calisthenics.svg",
-        other: "central-market.svg",
+        nature: "sea-cliff.jpg",
+        restaurants: "restaurant-terrace.jpg",
+        coffee: "coffee-counter.jpg",
+        beaches: "gelendzhik-bay.jpg",
+        parks: "park-path.jpg",
+        kids: "playground.jpg",
+        sport: "sports-court.jpg",
+        other: "market.jpg",
       };
-      const imageAltLabels = {
-        "abrau-lake.svg": "Иллюстрация: горное озеро и светлая линия берега.",
-        "amusement-park.svg": "Иллюстрация: семейные аттракционы и яркие игровые формы.",
-        "basketball.svg": "Иллюстрация: открытая спортивная площадка с мячом.",
-        "bay-beach.svg": "Иллюстрация: пляж в бухте с солнцем и спокойной водой.",
-        "calisthenics.svg": "Иллюстрация: уличная спортивная площадка для тренировок.",
-        "central-market.svg": "Иллюстрация: рыночные прилавки с фруктами и продуктами.",
-        "cheese-fish.svg": "Иллюстрация: ресторанная сервировка с тарелкой.",
-        "coffee-counter.svg": "Иллюстрация: чашка кофе на светлой стойке.",
-        "dessert-cafe.svg": "Иллюстрация: кофейня с десертами и теплым светом.",
-        "divnomorskaya-beach.svg": "Иллюстрация: небольшой чистый пляж у моря.",
-        "dzhankhot.svg": "Иллюстрация: приморский поселок с домами у лесистого склона.",
-        "forest-park.svg": "Иллюстрация: зеленый лесной парк с дорожкой.",
-        "gelato.svg": "Иллюстрация: кафе с мороженым и кофе.",
-        "golubaya-bezdna.svg": "Иллюстрация: высокий морской обрыв и синяя вода.",
-        "grill.svg": "Иллюстрация: огонь и гриль для шашлыка.",
-        "indoor-play.svg": "Иллюстрация: крытая детская игровая зона.",
-        "italian-restaurant.svg": "Иллюстрация: итальянский ресторан с террасой.",
-        "market-fair.svg": "Иллюстрация: фермерская ярмарка с фруктами.",
-        "markhot-trail.svg": "Иллюстрация: горный маршрут по хребту.",
-        "mountain-cross.svg": "Иллюстрация: белый крест на вершине горы.",
-        "old-park.svg": "Иллюстрация: парк с архитектурой и зелеными деревьями.",
-        "open-sea-beach.svg": "Иллюстрация: открытое море и скалистый берег.",
-        "park-hammocks.svg": "Иллюстрация: зеленый парк с гамаками.",
-        "pebble-beach.svg": "Иллюстрация: галечный пляж у моря.",
-        "playground.svg": "Иллюстрация: детская площадка в зелени.",
-        "restaurant-interior.svg": "Иллюстрация: ресторанная сервировка в спокойном интерьере.",
-        "rio-shipwreck.svg": "Иллюстрация: большой сухогруз у морского берега.",
-        "sail-rock.svg": "Иллюстрация: скала Парус у моря.",
-        "sand-beach.svg": "Иллюстрация: песчаный пляж и линия воды.",
-        "sea-view-restaurant.svg": "Иллюстрация: ресторан с видом на море.",
-        "seafood.svg": "Иллюстрация: блюдо с морепродуктами.",
-        "sushi.svg": "Иллюстрация: роллы на белой тарелке.",
-        "tea-house.svg": "Иллюстрация: чайная и кофейня рядом с зеленью.",
-        "tennis.svg": "Иллюстрация: теннисный корт на открытом воздухе.",
-        "trampoline.svg": "Иллюстрация: детские батуты и игровые модули.",
-        "urban-restaurant.svg": "Иллюстрация: городской ресторан или паб.",
-        "volleyball.svg": "Иллюстрация: пляжная волейбольная сетка и мяч.",
-        "waterpark.svg": "Иллюстрация: водная горка в аквапарке.",
-        "wine-museum.svg": "Иллюстрация: бокал вина и музейное пространство.",
-        "winery.svg": "Иллюстрация: виноградники и здание винодельни.",
-        "zhane-waterfalls.svg": "Иллюстрация: лесная тропа с водопадом.",
+      const imageAssets = {
+        "abrau-lake.jpg": {
+          alt: "Озеро Абрау с зелёными холмами вокруг.",
+          sourceType: "licensed",
+          credit: "Мартышка",
+          license: "Public Domain",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Abrau.jpg",
+        },
+        "beach-bay.jpg": {
+          alt: "Солнечный пляж в бухте Геленджика с морем и холмами.",
+          sourceType: "generated",
+        },
+        "cafe-dessert.jpg": {
+          alt: "Кофе, десерт и мороженое на столике в светлой кофейне.",
+          sourceType: "generated",
+        },
+        "coffee-counter.jpg": {
+          alt: "Кофейная стойка с чашкой кофе и выпечкой.",
+          sourceType: "generated",
+        },
+        "dzhankhot.jpg": {
+          alt: "Небольшой приморский посёлок на склоне у Чёрного моря.",
+          sourceType: "generated",
+        },
+        "food-table.jpg": {
+          alt: "Ресторанный стол с горячими блюдами и овощами на террасе.",
+          sourceType: "generated",
+        },
+        "gelendzhik-bay.jpg": {
+          alt: "Бухта Геленджика с городом, пляжами и горами.",
+          sourceType: "licensed",
+          credit: "Vihljun",
+          license: "Public Domain",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Gelendzhik_Bay.JPG",
+        },
+        "indoor-play.jpg": {
+          alt: "Крытая детская игровая зона с батутами и мягкими модулями.",
+          sourceType: "generated",
+        },
+        "market.jpg": {
+          alt: "Рыночный прилавок с фруктами, специями и местными сладостями.",
+          sourceType: "generated",
+        },
+        "mountain-cross.jpg": {
+          alt: "Белый крест на горном хребте над Геленджикской бухтой.",
+          sourceType: "generated",
+        },
+        "park-path.jpg": {
+          alt: "Зелёный парк с тенистой дорожкой и скамейками.",
+          sourceType: "generated",
+        },
+        "playground.jpg": {
+          alt: "Детская площадка у морской прогулочной зоны.",
+          sourceType: "generated",
+        },
+        "restaurant-terrace.jpg": {
+          alt: "Ресторанная терраса с видом на море и горы.",
+          sourceType: "generated",
+        },
+        "rio-shipwreck.jpg": {
+          alt: "Ржавый сухогруз у галечного берега Чёрного моря.",
+          sourceType: "generated",
+        },
+        "sail-rock.jpg": {
+          alt: "Скала Парус стоит в море у берега Прасковеевки.",
+          sourceType: "licensed",
+          credit: "Sergey S. Dukachev",
+          license: "CC BY-SA 3.0 / GFDL / CC BY 2.5",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Parus_rock.jpg",
+        },
+        "sea-cliff.jpg": {
+          alt: "Высокий обрыв с соснами над синим Чёрным морем.",
+          sourceType: "generated",
+        },
+        "sports-court.jpg": {
+          alt: "Открытая спортивная площадка с турниками и разметкой.",
+          sourceType: "generated",
+        },
+        "waterpark.jpg": {
+          alt: "Большой открытый аквапарк с бассейнами и водными горками.",
+          sourceType: "generated",
+        },
+        "winery.jpg": {
+          alt: "Виноградники и винодельня на холмах у побережья.",
+          sourceType: "generated",
+        },
+        "zhane-waterfalls.jpg": {
+          alt: "Лесной водопад на каменных уступах и прозрачная горная вода.",
+          sourceType: "generated",
+        },
       };
       const placeImageFiles = new Map(
         Object.entries({
-          "zhane-waterfalls": "zhane-waterfalls.svg",
-          "mountain-cross": "mountain-cross.svg",
-          "terrenkur-markhot": "markhot-trail.svg",
-          "golubaya-bezdna": "golubaya-bezdna.svg",
-          dzhankhot: "dzhankhot.svg",
-          "praskoveevka-parus-rock": "sail-rock.svg",
-          "rio-shipwreck": "rio-shipwreck.svg",
-          "golubaya-bezdna-beach": "open-sea-beach.svg",
-          "old-park-kabardinka": "old-park.svg",
-          "chateau-de-talu": "winery.svg",
-          "abrau-durso": "abrau-lake.svg",
-          "the-mediterra-green": "italian-restaurant.svg",
-          "vienskiy-dvorik": "restaurant-interior.svg",
-          "syrovarnya-rybinsk": "cheese-fish.svg",
-          "sushi-rolls": "sushi.svg",
-          "mangal-house": "grill.svg",
-          "stanichniy-dvorik": "restaurant-interior.svg",
-          "roni-oyster": "seafood.svg",
-          "santa-fe": "italian-restaurant.svg",
-          "prichal-93": "sea-view-restaurant.svg",
-          "tom-yam": "sea-view-restaurant.svg",
-          "laguna-club-restaurant": "sea-view-restaurant.svg",
-          mayak: "sea-view-restaurant.svg",
-          dacha: "restaurant-interior.svg",
-          edison: "urban-restaurant.svg",
-          sicilia: "italian-restaurant.svg",
-          "tsekh-nashego-goroda": "urban-restaurant.svg",
-          "bereg-kofe": "coffee-counter.svg",
-          "surf-library-lilly": "coffee-counter.svg",
-          elephant: "tea-house.svg",
-          "mandelstam-cat": "coffee-counter.svg",
-          lumen: "coffee-counter.svg",
-          gelatiamo: "gelato.svg",
-          "el-pan": "dessert-cafe.svg",
-          keks: "dessert-cafe.svg",
-          "metropol-beach": "bay-beach.svg",
-          "central-sand-beaches": "sand-beach.svg",
-          "krasnaya-talka-beach": "bay-beach.svg",
-          "rakushka-divnomorskaya": "divnomorskaya-beach.svg",
-          "beaches-right-left": "pebble-beach.svg",
-          "open-sea-spinka-delfina": "open-sea-beach.svg",
-          "molodezhny-park": "park-hammocks.svg",
-          "vrungel-park": "forest-park.svg",
-          kontinent: "indoor-play.svg",
-          "tut-batut-toystation": "trampoline.svg",
-          "central-beach-playground": "playground.svg",
-          "central-park-culture-rest": "amusement-park.svg",
-          "limpopo-sport-ground": "calisthenics.svg",
-          "southern-basketball-court": "basketball.svg",
-          "tennis-courts": "tennis.svg",
-          "golden-bay-waterpark": "waterpark.svg",
-          "wine-city": "wine-museum.svg",
-          "beach-volleyball": "volleyball.svg",
-          "weekend-fair": "market-fair.svg",
-          "central-market": "central-market.svg",
+          "zhane-waterfalls": "zhane-waterfalls.jpg",
+          "mountain-cross": "mountain-cross.jpg",
+          "terrenkur-markhot": "sea-cliff.jpg",
+          "golubaya-bezdna": "sea-cliff.jpg",
+          dzhankhot: "dzhankhot.jpg",
+          "praskoveevka-parus-rock": "sail-rock.jpg",
+          "rio-shipwreck": "rio-shipwreck.jpg",
+          "golubaya-bezdna-beach": "sea-cliff.jpg",
+          "old-park-kabardinka": "park-path.jpg",
+          "chateau-de-talu": "winery.jpg",
+          "abrau-durso": "abrau-lake.jpg",
+          "the-mediterra-green": "restaurant-terrace.jpg",
+          "vienskiy-dvorik": "food-table.jpg",
+          "syrovarnya-rybinsk": "restaurant-terrace.jpg",
+          "sushi-rolls": "food-table.jpg",
+          "mangal-house": "food-table.jpg",
+          "stanichniy-dvorik": "food-table.jpg",
+          "roni-oyster": "food-table.jpg",
+          "santa-fe": "restaurant-terrace.jpg",
+          "prichal-93": "restaurant-terrace.jpg",
+          "tom-yam": "restaurant-terrace.jpg",
+          "laguna-club-restaurant": "restaurant-terrace.jpg",
+          mayak: "restaurant-terrace.jpg",
+          dacha: "food-table.jpg",
+          edison: "food-table.jpg",
+          sicilia: "restaurant-terrace.jpg",
+          "tsekh-nashego-goroda": "food-table.jpg",
+          "bereg-kofe": "coffee-counter.jpg",
+          "surf-library-lilly": "coffee-counter.jpg",
+          elephant: "coffee-counter.jpg",
+          "mandelstam-cat": "coffee-counter.jpg",
+          lumen: "coffee-counter.jpg",
+          gelatiamo: "cafe-dessert.jpg",
+          "el-pan": "cafe-dessert.jpg",
+          keks: "cafe-dessert.jpg",
+          "metropol-beach": "beach-bay.jpg",
+          "central-sand-beaches": "gelendzhik-bay.jpg",
+          "krasnaya-talka-beach": "beach-bay.jpg",
+          "rakushka-divnomorskaya": "beach-bay.jpg",
+          "beaches-right-left": "gelendzhik-bay.jpg",
+          "open-sea-spinka-delfina": "sea-cliff.jpg",
+          "molodezhny-park": "park-path.jpg",
+          "vrungel-park": "park-path.jpg",
+          kontinent: "indoor-play.jpg",
+          "tut-batut-toystation": "indoor-play.jpg",
+          "central-beach-playground": "playground.jpg",
+          "central-park-culture-rest": "park-path.jpg",
+          "limpopo-sport-ground": "sports-court.jpg",
+          "southern-basketball-court": "sports-court.jpg",
+          "tennis-courts": "sports-court.jpg",
+          "golden-bay-waterpark": "waterpark.jpg",
+          "wine-city": "winery.jpg",
+          "beach-volleyball": "sports-court.jpg",
+          "weekend-fair": "market.jpg",
+          "central-market": "market.jpg",
         }),
       );
       const mapSearchQueries = new Map(
@@ -1342,9 +1441,14 @@
 
       for (const place of places) {
         const imageFile = placeImageFiles.get(place.id) || categoryFallbackImages[place.category] || categoryFallbackImages.other;
+        const imageAsset = imageAssets[imageFile] || imageAssets[categoryFallbackImages.other];
         place.image = {
           src: `assets/place-photos/${imageFile}`,
-          alt: imageAltLabels[imageFile] || "Иллюстрация места.",
+          alt: imageAsset.alt,
+          sourceType: imageAsset.sourceType,
+          ...(imageAsset.credit ? { credit: imageAsset.credit } : {}),
+          ...(imageAsset.license ? { license: imageAsset.license } : {}),
+          ...(imageAsset.sourceUrl ? { sourceUrl: imageAsset.sourceUrl } : {}),
         };
 
         if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
@@ -1623,6 +1727,8 @@
 
       window.GelendzhikGuide = {
         categories,
+        categoryFallbackImages,
+        imageAssets,
         places,
         filterPlaces,
         groupPlaces,
