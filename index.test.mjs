@@ -111,7 +111,7 @@ test("guide data keeps the requested categories and required fields", () => {
     [...guide.categories].map((category) => category.id),
     ["nature", "restaurants", "coffee", "beaches", "parks", "kids", "sport", "other"],
   );
-  assert.equal(guide.places.length, 55);
+  assert.equal(guide.places.length, 54);
 
   for (const place of guide.places) {
     assert.ok(place.id, `${place.title} should have an id`);
@@ -150,21 +150,24 @@ test("grouping preserves category order and priority sorting", () => {
 test("only supplied map URLs are exposed", () => {
   const guide = loadGuideApi();
   const mappedPlaces = guide.places.filter((place) => place.mapUrl);
-  const mapUrlByTitle = new Map(mappedPlaces.map((place) => [place.title, place.mapUrl]));
+  const mappedTitles = Array.from(mappedPlaces, (place) => place.title);
 
-  assert.ok(mappedPlaces.length > 4);
+  assert.equal(mappedPlaces.length, 4);
   assert.ok(mappedPlaces.every((place) => place.mapUrl.startsWith("https://yandex.com/maps/")));
-  assert.ok(mappedPlaces.some((place) => place.title === "Голубая бездна"));
-  assert.ok(mappedPlaces.some((place) => place.title === "Баскетбольная площадка в Южном районе"));
-  assert.ok(mapUrlByTitle.has("Джанхот"));
-  assert.ok(mapUrlByTitle.has("Центральный парк культуры и отдыха"));
-  assert.ok(mapUrlByTitle.has("Метрополь"));
-  assert.ok(mapUrlByTitle.has("Центральные песчаные пляжи"));
+  assert.deepEqual(mappedTitles, [
+    "Голубая бездна",
+    "Открытое море / бывшая «Спинка дельфина»",
+    "Молодёжный парк",
+    "Баскетбольная площадка в Южном районе",
+  ]);
+  assert.ok(!guide.places.find((place) => place.title === "Джанхот").mapUrl);
+  assert.ok(!guide.places.find((place) => place.title === "Центральный парк культуры и отдыха").mapUrl);
 });
 
-test("map action is compact and filter chips show horizontal scroll affordance", () => {
-  assert.match(html, /\.map-link\s*{[\s\S]*?min-height:\s*32px;/);
-  assert.match(html, /\.map-link\s*{[\s\S]*?padding:\s*0 10px;/);
+test("map action uses the requested label and filter chips show horizontal scroll affordance", () => {
+  assert.match(html, /Открыть на карте/);
+  assert.match(html, /\.map-link\s*{[\s\S]*?min-height:\s*44px;/);
+  assert.match(html, /\.map-link\s*{[\s\S]*?padding:\s*0 14px;/);
   assert.doesNotMatch(html, /\.map-link\s*{[\s\S]*?background:\s*var\(--pine\);/);
   assert.match(html, /\.chip-row-wrap::after/);
   assert.match(html, /Прокрутите категории/);

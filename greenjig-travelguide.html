@@ -17,7 +17,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="Гид по Геленджику" />
-    <meta property="og:image" content="assets/gelendzhik-hero.jpg" />
+    <meta property="og:image" content="assets/greenjig-hero-image.jpg" />
     <meta property="og:image:width" content="1713" />
     <meta property="og:image:height" content="918" />
     <meta property="og:image:alt" content="Гид по Геленджику: море, горы и места для прогулок" />
@@ -27,7 +27,7 @@
       name="twitter:description"
       content="Личный гид по Геленджику с проверенными местами: природа, рестораны, кофейни, пляжи, детские локации, спорт и полезные точки."
     />
-    <meta name="twitter:image" content="assets/gelendzhik-hero.jpg" />
+    <meta name="twitter:image" content="assets/greenjig-hero-image.jpg" />
     <meta name="theme-color" content="#0f766e" />
     <script type="application/ld+json" id="jsonLd">
       {
@@ -397,7 +397,7 @@
 
       .map-link {
         display: inline-flex;
-        min-height: 44px;
+        min-height: 32px;
         width: fit-content;
         align-items: center;
         justify-content: center;
@@ -409,7 +409,7 @@
         font-size: 0.86rem;
         font-weight: 780;
         text-decoration: none;
-        padding: 0 14px;
+        padding: 0 10px;
         transition:
           background 160ms ease,
           border-color 160ms ease,
@@ -545,7 +545,7 @@
     <header class="hero">
       <img
         class="hero__image"
-        src="assets/gelendzhik-hero.jpg"
+        src="assets/greenjig-hero-image.jpg"
         width="1713"
         height="918"
         alt="Побережье Геленджика с морем и зелёными холмами"
@@ -598,6 +598,10 @@
         { id: "other", label: "Разное", chipLabel: "Разное" },
       ];
 
+      function yandexMapSearchUrl(query) {
+        return `https://yandex.com/maps/10990/gelendzhik/search/${encodeURIComponent(query)}/`;
+      }
+
       const places = [
         {
           id: "zhane-waterfalls",
@@ -605,7 +609,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Наша любимая тропа с водопадами и красивым лесом. Ехать примерно 15–20 минут на машине. Если не было дождей, там приятно гулять. До большого водопада идти далековато, и не все доходят, но маленькие водопады тоже красивые. Рекомендую дойти до места «Ванна Афродиты» — по легенде, в ней она купалась с Гераклом 😊",
+            "Наша любимая тропа с водопадами и красивым лесом. Ехать примерно 15-20 минут на машине. Если не было дождей, там приятно гулять. До большого водопада идти далековато, и не все доходят, но маленькие водопады тоже красивые. Рекомендую дойти до места «Ванна Афродиты» — по легенде, в ней она купалась с Гераклом 😊",
           tags: ["прогулка", "лес", "водопады"],
           priority: 1,
         },
@@ -625,7 +629,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Подняться к старой надписи «Геленджик» — направо от «Олимпа» — по серпантину и погулять по маршруту.",
+            "Подняться к старой надписи «Геленджик» - направо от «Олимпа» - по серпантину и погулять по маршруту.",
           tags: ["маршрут", "серпантин", "вид"],
           priority: 3,
         },
@@ -645,7 +649,7 @@
           title: "Джанхот",
           category: "nature",
           categoryLabel: "Природа",
-          description: "Небольшой посёлок с пляжем, лесом и музеем Короленко — красивым домом с историей.",
+          description: "Небольшой посёлок с пляжем, лесом и музеем Короленко - красивым домом с историей.",
           tags: ["пляж", "лес", "музей"],
           priority: 5,
         },
@@ -684,7 +688,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Винодельня в Геленджике. Можно сходить на экскурсию и дегустацию — хороший вариант для разнообразия.",
+            "Винодельня в Геленджике. Можно сходить на экскурсию и дегустацию - хороший вариант для разнообразия.",
           tags: ["винодельня", "экскурсия", "дегустация"],
           priority: 10,
         },
@@ -703,7 +707,7 @@
           category: "restaurants",
           categoryLabel: "Рестораны",
           description:
-            "Очень вкусная итальянская кухня. У них несколько заведений в Геленджике, но называются они по-разному — остальные можно посмотреть на сайте или в картах.",
+            "Очень вкусная итальянская кухня. У них несколько заведений в Геленджике, но называются они по-разному - остальные можно посмотреть на сайте или в картах.",
           tags: ["итальянская кухня", "ужин"],
           priority: 1,
         },
@@ -784,7 +788,7 @@
           title: "Том Ям",
           category: "restaurants",
           categoryLabel: "Рестораны",
-          description: "Вкусный том-ям и азиатская кухня. Вид — топ.",
+          description: "Вкусный том-ям и азиатская кухня. Вид - топ.",
           tags: ["азиатская кухня", "вид"],
           priority: 10,
         },
@@ -875,7 +879,7 @@
           title: "Кофе. Кошка. Мандельштам",
           category: "coffee",
           categoryLabel: "Кофейни",
-          description: "Красивый интерьер и оригинальная концепция. И похожие места — на любителя.",
+          description: "Красивый интерьер и оригинальная концепция. И похожие места - на любителя.",
           tags: ["кофе", "интерьер", "концепция"],
           priority: 4,
         },
@@ -1035,7 +1039,7 @@
           category: "sport",
           categoryLabel: "Спортивные площадки",
           description:
-            "Классная спортивная площадка на набережной между улицами Красивая и Маячная. Ориентир — детская площадка «Лимпопо». Удобное место: дети могут играть рядом, а взрослые — потренироваться.",
+            "Классная спортивная площадка на набережной между улицами Красивая и Маячная. Ориентир - детская площадка «Лимпопо». Удобное место: дети могут играть рядом, а взрослые - потренироваться.",
           tags: ["набережная", "тренировка", "Лимпопо"],
           priority: 1,
         },
@@ -1108,6 +1112,45 @@
           priority: 5,
         },
       ];
+
+      const placesWithoutMap = new Set(["sushi-rolls"]);
+      const mapSearchQueries = new Map(
+        Object.entries({
+          "zhane-waterfalls": "Водопады на реке Жане Геленджик",
+          "mountain-cross": "Гора с крестом Геленджик",
+          "terrenkur-markhot": "Терренкур Маркхот Геленджик",
+          dzhankhot: "Джанхот Геленджик",
+          "praskoveevka-parus-rock": "Прасковеевка скала Парус",
+          "rio-shipwreck": "Сухогруз Рио Кабардинка",
+          "old-park-kabardinka": "Старый парк Кабардинка",
+          "chateau-de-talu": "Шато де Талю Геленджик",
+          "abrau-durso": "Абрау-Дюрсо",
+          "syrovarnya-rybinsk": "Сыроварня Рыбинск Геленджик",
+          "surf-library-lally": "Surf Coffee Библиотека кофе Lally Геленджик",
+          "mandelstam-cat": "Кошка Мандельштам кофе Геленджик",
+          "metropol-beach": "Пляж Метрополь Геленджик",
+          "central-sand-beaches": "Центральный пляж Геленджик",
+          "krasnaya-talka-beach": "Пляж санатория Красная Талка Геленджик",
+          "rakushka-divnomorskaya": "Ракушка Дивноморская пляж Геленджик",
+          "beaches-right-left": "Пляжи Геленджика",
+          "vrungel-park": "Парк Врунгеля Геленджик",
+          kontinent: "Континент детский развлекательный комплекс Геленджик",
+          "tut-batut-toystation": "Тут-Батут ToyStation Геленджик",
+          "central-beach-playground": "Детская площадка Центральный пляж Геленджик",
+          "central-park-culture-rest": "Центральный парк культуры и отдыха Геленджик",
+          "limpopo-sport-ground": "Спортивная площадка Лимпопо Геленджик",
+          "tennis-courts": "Теннисные корты Геленджик",
+          "beach-volleyball": "Пляжный волейбол Геленджик",
+          "weekend-fair": "Ярмарка выходного дня Геленджик",
+          "central-market": "Центральный рынок Геленджик",
+        }),
+      );
+
+      for (const place of places) {
+        if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
+          place.mapUrl = yandexMapSearchUrl(mapSearchQueries.get(place.id) || `${place.title} Геленджик`);
+        }
+      }
 
       const categoryOrder = new Map(categories.map((category, index) => [category.id, index]));
       const categoryById = new Map(categories.map((category) => [category.id, category]));
@@ -1240,7 +1283,7 @@
           return;
         }
 
-        const link = createNode("a", "map-link", "Открыть на карте");
+        const link = createNode("a", "map-link", "Карта");
         link.href = place.mapUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
