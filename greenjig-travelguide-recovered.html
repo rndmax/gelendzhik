@@ -397,7 +397,7 @@
 
       .map-link {
         display: inline-flex;
-        min-height: 32px;
+        min-height: 44px;
         width: fit-content;
         align-items: center;
         justify-content: center;
@@ -409,7 +409,7 @@
         font-size: 0.86rem;
         font-weight: 780;
         text-decoration: none;
-        padding: 0 10px;
+        padding: 0 14px;
         transition:
           background 160ms ease,
           border-color 160ms ease,
@@ -1240,7 +1240,7 @@
           return;
         }
 
-        const link = createNode("a", "map-link", "Карта");
+        const link = createNode("a", "map-link", "Открыть на карте");
         link.href = place.mapUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
