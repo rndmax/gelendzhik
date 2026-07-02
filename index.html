@@ -8,14 +8,26 @@
       name="description"
       content="Личный мобильный гид по Геленджику: природа, рестораны, кофейни, пляжи, парки, детские места, спорт и полезные точки."
     />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="Гид по Геленджику" />
     <meta
       property="og:description"
-      content="Личная подборка мест в Геленджике: куда сходить, где поесть, где гулять и что посмотреть с детьми."
+      content="Личный гид по Геленджику с проверенными местами: природа, рестораны, кофейни, пляжи, детские локации, спорт и полезные точки."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:image" content="assets/gelendzhik-hero.jpg" />
+    <meta property="og:site_name" content="Гид по Геленджику" />
+    <meta property="og:image" content="https://gelendzhik-guide.korevsky.ru/assets/gelendzhik-hero.jpg" />
+    <meta property="og:image:width" content="1713" />
+    <meta property="og:image:height" content="918" />
+    <meta property="og:image:alt" content="Гид по Геленджику: море, горы и места для прогулок" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Гид по Геленджику" />
+    <meta
+      name="twitter:description"
+      content="Личный гид по Геленджику с проверенными местами: природа, рестораны, кофейни, пляжи, детские локации, спорт и полезные точки."
+    />
+    <meta name="twitter:image" content="https://gelendzhik-guide.korevsky.ru/assets/gelendzhik-hero.jpg" />
     <meta name="theme-color" content="#0f766e" />
     <script type="application/ld+json" id="jsonLd">
       {
@@ -427,7 +439,7 @@
 
       .map-link {
         display: inline-flex;
-        min-height: 32px;
+        min-height: 44px;
         width: fit-content;
         align-items: center;
         justify-content: center;
@@ -439,7 +451,7 @@
         font-size: 0.86rem;
         font-weight: 780;
         text-decoration: none;
-        padding: 0 10px;
+        padding: 0 14px;
         transition:
           background 160ms ease,
           border-color 160ms ease,
@@ -653,10 +665,6 @@
         { id: "other", label: "Разное", chipLabel: "Разное" },
       ];
 
-      function yandexMapSearchUrl(query) {
-        return `https://yandex.com/maps/10990/gelendzhik/search/${encodeURIComponent(query)}/`;
-      }
-
       const places = [
         {
           id: "zhane-waterfalls",
@@ -664,7 +672,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Наша любимая тропа с водопадами и красивым лесом. Ехать примерно 15-20 минут на машине. Если не было дождей, там приятно гулять. До большого водопада идти далековато, и не все доходят, но маленькие водопады тоже красивые.",
+            "Наша любимая тропа с водопадами и красивым лесом. Ехать примерно 15–20 минут на машине. Если не было дождей, там приятно гулять. До большого водопада идти далековато, и не все доходят, но маленькие водопады тоже красивые. Рекомендую дойти до места «Ванна Афродиты» — по легенде, в ней она купалась с Гераклом 😊",
           tags: ["прогулка", "лес", "водопады"],
           priority: 1,
         },
@@ -674,7 +682,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Можно подняться пешком по тропе или на канатной дороге, а потом погулять по горе. Это тот самый крест, который видно из окна.",
+            "Можно подняться пешком по тропе или на канатной дороге, а потом погулять по горе. Это тот самый крест, который видно из окна. У основания креста есть небольшая часовня, где можно поставить свечи и совершить молитву.",
           tags: ["вид", "тропа", "канатная дорога"],
           priority: 2,
         },
@@ -684,7 +692,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Подняться к старой надписи «Геленджик» - направо от «Олимпа» - по серпантину и погулять по маршруту.",
+            "Подняться к старой надписи «Геленджик» — направо от «Олимпа» — по серпантину и погулять по маршруту.",
           tags: ["маршрут", "серпантин", "вид"],
           priority: 3,
         },
@@ -704,7 +712,7 @@
           title: "Джанхот",
           category: "nature",
           categoryLabel: "Природа",
-          description: "Небольшой посёлок с пляжем, лесом и музеем Короленко - красивым домом с историей.",
+          description: "Небольшой посёлок с пляжем, лесом и музеем Короленко — красивым домом с историей.",
           tags: ["пляж", "лес", "музей"],
           priority: 5,
         },
@@ -728,22 +736,13 @@
           priority: 7,
         },
         {
-          id: "golubaya-bezdna-beach",
-          title: "Пляж «Голубая бездна»",
-          category: "nature",
-          categoryLabel: "Природа",
-          description: "Красивое место у открытого моря.",
-          tags: ["пляж", "открытое море"],
-          priority: 8,
-        },
-        {
           id: "old-park-kabardinka",
           title: "Старый парк в Кабардинке",
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Очень красивое место: архитектура, скульптуры, музыка, художники и атмосферные прогулки.",
-          tags: ["архитектура", "прогулка", "Кабардинка"],
+            "Очень красивое место: архитектура, скульптуры, музыка, театр, художники и атмосферные прогулки.",
+          tags: ["архитектура", "прогулка", "театр", "Кабардинка"],
           priority: 9,
         },
         {
@@ -752,7 +751,7 @@
           category: "nature",
           categoryLabel: "Природа",
           description:
-            "Винодельня в Геленджике. Можно сходить на экскурсию и дегустацию - хороший вариант для разнообразия.",
+            "Винодельня в Геленджике. Можно сходить на экскурсию и дегустацию — хороший вариант для разнообразия.",
           tags: ["винодельня", "экскурсия", "дегустация"],
           priority: 10,
         },
@@ -771,7 +770,7 @@
           category: "restaurants",
           categoryLabel: "Рестораны",
           description:
-            "Очень вкусная итальянская кухня. У них несколько заведений в Геленджике, но называются они по-разному - остальные можно посмотреть на сайте или в картах.",
+            "Очень вкусная итальянская кухня. У них несколько заведений в Геленджике, но называются они по-разному — остальные можно посмотреть на сайте или в картах.",
           tags: ["итальянская кухня", "ужин"],
           priority: 1,
         },
@@ -852,7 +851,7 @@
           title: "Том Ям",
           category: "restaurants",
           categoryLabel: "Рестораны",
-          description: "Вкусный том-ям и азиатская кухня. Вид - топ.",
+          description: "Вкусный том-ям и азиатская кухня. Вид — топ.",
           tags: ["азиатская кухня", "вид"],
           priority: 10,
         },
@@ -861,8 +860,8 @@
           title: "Laguna Club Restaurant",
           category: "restaurants",
           categoryLabel: "Рестораны",
-          description: "Ресторан с бассейном и выходом к морю.",
-          tags: ["бассейн", "море"],
+          description: "Ресторан с бассейном и выходом к морю. Можно взять лежак у бассейна и перекусить.",
+          tags: ["бассейн", "море", "лежак", "перекус"],
           priority: 11,
         },
         {
@@ -921,8 +920,8 @@
           priority: 1,
         },
         {
-          id: "surf-library-lilly",
-          title: "Surf Coffee, «Библиотека кофе», Lilly",
+          id: "surf-library-lally",
+          title: "Surf Coffee, «Библиотека кофе», Lally",
           category: "coffee",
           categoryLabel: "Кофейни",
           description: "Несколько кофеен рядом: можно выбрать по настроению.",
@@ -940,11 +939,11 @@
         },
         {
           id: "mandelstam-cat",
-          title: "Кофе «Кошка Мандельштам»",
+          title: "Кофе. Кошка. Мандельштам",
           category: "coffee",
           categoryLabel: "Кофейни",
-          description: "И похожие места - на любителя.",
-          tags: ["кофе"],
+          description: "Красивый интерьер и оригинальная концепция. И похожие места — на любителя.",
+          tags: ["кофе", "интерьер", "концепция"],
           priority: 4,
         },
         {
@@ -970,8 +969,8 @@
           title: "Эль Пан",
           category: "coffee",
           categoryLabel: "Кофейни",
-          description: "Вкусная еда и десерты.",
-          tags: ["десерты", "еда"],
+          description: "Вкусная еда и десерты. Первая линия, вид на море.",
+          tags: ["десерты", "еда", "первая линия", "вид на море"],
           priority: 7,
         },
         {
@@ -1103,7 +1102,7 @@
           category: "sport",
           categoryLabel: "Спортивные площадки",
           description:
-            "Классная спортивная площадка на набережной между улицами Красивая и Маячная. Ориентир - детская площадка «Лимпопо». Удобное место: дети могут играть рядом, а взрослые - потренироваться.",
+            "Классная спортивная площадка на набережной между улицами Красивая и Маячная. Ориентир — детская площадка «Лимпопо». Удобное место: дети могут играть рядом, а взрослые — потренироваться.",
           tags: ["набережная", "тренировка", "Лимпопо"],
           priority: 1,
         },
@@ -1133,7 +1132,8 @@
           title: "Аквапарк «Золотая Бухта»",
           category: "other",
           categoryLabel: "Разное",
-          description: "Большой аквапарк.",
+          description:
+            "Один из лучших аквапарков, в которых я был: открытый, с классным видом на море и горы, большим пространством и зеленью под открытым небом. Внутри есть камеры хранения и кафешки. Возьмите с собой крем от солнца и одежду для купания: с 12 до 15 солнце беспощадное, в это время лучше полежать на лежаках или пуфиках в тени сосен.",
           tags: ["аквапарк"],
           priority: 1,
         },
@@ -1160,7 +1160,8 @@
           title: "Ярмарка выходного дня",
           category: "other",
           categoryLabel: "Разное",
-          description: "Вкусные дары Кубани от местных фермеров.",
+          description:
+            "Ярмарка с вкуснейшими продуктами: овощи, фрукты, рыба, орехи, мед и так далее. Проходит по субботам и воскресеньям на площади перед Центральным рынком, с утра примерно до 16:00.",
           tags: ["фермеры", "Кубань"],
           priority: 4,
         },
@@ -1174,46 +1175,6 @@
           priority: 5,
         },
       ];
-
-      const placesWithoutMap = new Set(["sushi-rolls"]);
-      const mapSearchQueries = new Map(
-        Object.entries({
-          "zhane-waterfalls": "Водопады на реке Жане Геленджик",
-          "mountain-cross": "Гора с крестом Геленджик",
-          "terrenkur-markhot": "Терренкур Маркхот Геленджик",
-          dzhankhot: "Джанхот Геленджик",
-          "praskoveevka-parus-rock": "Прасковеевка скала Парус",
-          "rio-shipwreck": "Сухогруз Рио Кабардинка",
-          "golubaya-bezdna-beach": "Пляж Голубая бездна Геленджик",
-          "old-park-kabardinka": "Старый парк Кабардинка",
-          "chateau-de-talu": "Шато де Талю Геленджик",
-          "abrau-durso": "Абрау-Дюрсо",
-          "syrovarnya-rybinsk": "Сыроварня Рыбинск Геленджик",
-          "surf-library-lilly": "Surf Coffee Библиотека кофе Lilly Геленджик",
-          "mandelstam-cat": "Кошка Мандельштам кофе Геленджик",
-          "metropol-beach": "Пляж Метрополь Геленджик",
-          "central-sand-beaches": "Центральный пляж Геленджик",
-          "krasnaya-talka-beach": "Пляж санатория Красная Талка Геленджик",
-          "rakushka-divnomorskaya": "Ракушка Дивноморская пляж Геленджик",
-          "beaches-right-left": "Пляжи Геленджика",
-          "vrungel-park": "Парк Врунгеля Геленджик",
-          kontinent: "Континент детский развлекательный комплекс Геленджик",
-          "tut-batut-toystation": "Тут-Батут ToyStation Геленджик",
-          "central-beach-playground": "Детская площадка Центральный пляж Геленджик",
-          "central-park-culture-rest": "Центральный парк культуры и отдыха Геленджик",
-          "limpopo-sport-ground": "Спортивная площадка Лимпопо Геленджик",
-          "tennis-courts": "Теннисные корты Геленджик",
-          "beach-volleyball": "Пляжный волейбол Геленджик",
-          "weekend-fair": "Ярмарка выходного дня Геленджик",
-          "central-market": "Центральный рынок Геленджик",
-        }),
-      );
-
-      for (const place of places) {
-        if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
-          place.mapUrl = yandexMapSearchUrl(mapSearchQueries.get(place.id) || `${place.title} Геленджик`);
-        }
-      }
 
       const categoryOrder = new Map(categories.map((category, index) => [category.id, index]));
       const categoryById = new Map(categories.map((category) => [category.id, category]));
@@ -1346,7 +1307,7 @@
           return;
         }
 
-        const link = createNode("a", "map-link", "Карта");
+        const link = createNode("a", "map-link", "Открыть на карте");
         link.href = place.mapUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
