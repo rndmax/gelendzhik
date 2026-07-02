@@ -665,6 +665,10 @@
         { id: "other", label: "Разное", chipLabel: "Разное" },
       ];
 
+      function yandexMapSearchUrl(query) {
+        return `https://yandex.com/maps/10990/gelendzhik/search/${encodeURIComponent(query)}/`;
+      }
+
       const places = [
         {
           id: "zhane-waterfalls",
@@ -1175,6 +1179,45 @@
           priority: 5,
         },
       ];
+
+      const placesWithoutMap = new Set(["sushi-rolls"]);
+      const mapSearchQueries = new Map(
+        Object.entries({
+          "zhane-waterfalls": "Водопады на реке Жане Геленджик",
+          "mountain-cross": "Гора с крестом Геленджик",
+          "terrenkur-markhot": "Терренкур Маркхот Геленджик",
+          dzhankhot: "Джанхот Геленджик",
+          "praskoveevka-parus-rock": "Прасковеевка скала Парус",
+          "rio-shipwreck": "Сухогруз Рио Кабардинка",
+          "old-park-kabardinka": "Старый парк Кабардинка",
+          "chateau-de-talu": "Шато де Талю Геленджик",
+          "abrau-durso": "Абрау-Дюрсо",
+          "syrovarnya-rybinsk": "Сыроварня Рыбинск Геленджик",
+          "surf-library-lally": "Surf Coffee Библиотека кофе Lally Геленджик",
+          "mandelstam-cat": "Кошка Мандельштам кофе Геленджик",
+          "metropol-beach": "Пляж Метрополь Геленджик",
+          "central-sand-beaches": "Центральный пляж Геленджик",
+          "krasnaya-talka-beach": "Пляж санатория Красная Талка Геленджик",
+          "rakushka-divnomorskaya": "Ракушка Дивноморская пляж Геленджик",
+          "beaches-right-left": "Пляжи Геленджика",
+          "vrungel-park": "Парк Врунгеля Геленджик",
+          kontinent: "Континент детский развлекательный комплекс Геленджик",
+          "tut-batut-toystation": "Тут-Батут ToyStation Геленджик",
+          "central-beach-playground": "Детская площадка Центральный пляж Геленджик",
+          "central-park-culture-rest": "Центральный парк культуры и отдыха Геленджик",
+          "limpopo-sport-ground": "Спортивная площадка Лимпопо Геленджик",
+          "tennis-courts": "Теннисные корты Геленджик",
+          "beach-volleyball": "Пляжный волейбол Геленджик",
+          "weekend-fair": "Ярмарка выходного дня Геленджик",
+          "central-market": "Центральный рынок Геленджик",
+        }),
+      );
+
+      for (const place of places) {
+        if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
+          place.mapUrl = yandexMapSearchUrl(mapSearchQueries.get(place.id) || `${place.title} Геленджик`);
+        }
+      }
 
       const categoryOrder = new Map(categories.map((category, index) => [category.id, index]));
       const categoryById = new Map(categories.map((category) => [category.id, category]));

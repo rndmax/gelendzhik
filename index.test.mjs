@@ -168,21 +168,19 @@ test("grouping preserves category order and priority sorting", () => {
   assert.equal(groups.at(-1).places.at(-1).title, "Центральный рынок");
 });
 
-test("only supplied map URLs are exposed", () => {
+test("map URLs are generated for searchable places except explicit exclusions", () => {
   const guide = loadGuideApi();
   const mappedPlaces = guide.places.filter((place) => place.mapUrl);
   const mappedTitles = Array.from(mappedPlaces, (place) => place.title);
 
-  assert.equal(mappedPlaces.length, 4);
+  assert.equal(mappedPlaces.length, guide.places.length - 1);
   assert.ok(mappedPlaces.every((place) => place.mapUrl.startsWith("https://yandex.com/maps/")));
-  assert.deepEqual(mappedTitles, [
-    "Голубая бездна",
-    "Открытое море / бывшая «Спинка дельфина»",
-    "Молодёжный парк",
-    "Баскетбольная площадка в Южном районе",
-  ]);
-  assert.ok(!guide.places.find((place) => place.title === "Джанхот").mapUrl);
-  assert.ok(!guide.places.find((place) => place.title === "Центральный парк культуры и отдыха").mapUrl);
+  assert.ok(mappedTitles.includes("Голубая бездна"));
+  assert.ok(mappedTitles.includes("Джанхот"));
+  assert.ok(mappedTitles.includes("Метрополь"));
+  assert.ok(mappedTitles.includes("Центральные песчаные пляжи"));
+  assert.ok(mappedTitles.includes("Баскетбольная площадка в Южном районе"));
+  assert.ok(!guide.places.find((place) => place.title === "Суши и роллы").mapUrl);
 });
 
 test("map action uses the requested label and filter chips show horizontal scroll affordance", () => {
