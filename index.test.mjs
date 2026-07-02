@@ -168,21 +168,32 @@ test("grouping preserves category order and priority sorting", () => {
   assert.equal(groups.at(-1).places.at(-1).title, "Центральный рынок");
 });
 
-test("only supplied map URLs are exposed", () => {
+test("map URLs are generated for searchable places except explicit exclusions", () => {
   const guide = loadGuideApi();
   const mappedPlaces = guide.places.filter((place) => place.mapUrl);
   const mappedTitles = Array.from(mappedPlaces, (place) => place.title);
+  const findPlace = (id) => guide.places.find((place) => place.id === id);
 
-  assert.equal(mappedPlaces.length, 4);
+  assert.equal(mappedPlaces.length, guide.places.length - 1);
   assert.ok(mappedPlaces.every((place) => place.mapUrl.startsWith("https://yandex.com/maps/")));
-  assert.deepEqual(mappedTitles, [
-    "Голубая бездна",
-    "Открытое море / бывшая «Спинка дельфина»",
-    "Молодёжный парк",
-    "Баскетбольная площадка в Южном районе",
-  ]);
-  assert.ok(!guide.places.find((place) => place.title === "Джанхот").mapUrl);
-  assert.ok(!guide.places.find((place) => place.title === "Центральный парк культуры и отдыха").mapUrl);
+  assert.equal(findPlace("golubaya-bezdna").mapUrl, "https://yandex.com/maps/-/CTeUYRjw");
+  assert.equal(findPlace("dzhankhot").mapUrl, "https://yandex.com/maps/-/CTeUY0p2");
+  assert.equal(findPlace("metropol-beach").mapUrl, "https://yandex.com/maps/-/CTeUyD3S");
+  assert.equal(findPlace("southern-basketball-court").mapUrl, "https://yandex.com/maps/-/CTeURY09");
+  assert.match(findPlace("central-sand-beaches").mapUrl, /\/search\/%D0%A6%D0%B5%D0%BD%D1%82%D1%80/);
+  assert.match(findPlace("beach-volleyball").mapUrl, /\/search\/%D0%9F%D0%BB%D1%8F%D0%B6%D0%BD/);
+  assert.ok(mappedTitles.includes("Центральные песчаные пляжи"));
+  assert.ok(!findPlace("sushi-rolls").mapUrl);
+});
+
+test("guide keeps requested local notes around repairs and kids places", () => {
+  const guide = loadGuideApi();
+  const findPlace = (id) => guide.places.find((place) => place.id === id);
+
+  assert.match(findPlace("vrungel-park").description, /на время ремонта вход сбоку/i);
+  assert.equal(findPlace("tut-batut-toystation").title, "Тут-Батут");
+  assert.doesNotMatch(findPlace("tut-batut-toystation").title, /ToyStation/);
+  assert.match(findPlace("central-beach-playground").description, /много детских площадок поменьше вдоль набережной/);
 });
 
 test("map action uses the requested label and filter chips show horizontal scroll affordance", () => {

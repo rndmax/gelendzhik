@@ -665,6 +665,10 @@
         { id: "other", label: "Разное", chipLabel: "Разное" },
       ];
 
+      function yandexMapSearchUrl(query) {
+        return `https://yandex.com/maps/10990/gelendzhik/search/${encodeURIComponent(query)}/`;
+      }
+
       const places = [
         {
           id: "zhane-waterfalls",
@@ -703,7 +707,6 @@
           categoryLabel: "Природа",
           description:
             "Красивое место между Дивноморским и Джанхотом: виноградники, сосновый лес и спуск с обрыва к морю.",
-          mapUrl: "https://yandex.com/maps/org/golubaya_bezdna/161229141776?si=8v12cb9mk3216hmppp2516vcb0",
           tags: ["море", "сосны", "виноградники"],
           priority: 4,
         },
@@ -1033,7 +1036,6 @@
           category: "beaches",
           categoryLabel: "Пляжи",
           description: "Оборудованный пляж с очень чистым морем. Тонкий мыс.",
-          mapUrl: "https://yandex.com/maps/org/plyazh_ulyotny_bereg/205481913197?si=8v12cb9mk3216hmppp2516vcb0",
           tags: ["чистое море", "Тонкий мыс"],
           priority: 6,
         },
@@ -1043,7 +1045,6 @@
           category: "parks",
           categoryLabel: "Парки",
           description: "Новый современный парк с гамаками.",
-          mapUrl: "https://yandex.com/maps/org/molodyozhny_park/27759735661?si=8v12cb9mk3216hmppp2516vcb0",
           tags: ["гамаки", "парк"],
           priority: 1,
         },
@@ -1052,7 +1053,7 @@
           title: "Парк Врунгеля",
           category: "parks",
           categoryLabel: "Парки",
-          description: "Сейчас на ремонте, но по лесу можно погулять.",
+          description: "Сейчас на ремонте, но по лесу можно погулять. На время ремонта вход сбоку.",
           tags: ["лес", "прогулка"],
           priority: 2,
         },
@@ -1068,7 +1069,7 @@
         },
         {
           id: "tut-batut-toystation",
-          title: "Тут-Батут и ToyStation",
+          title: "Тут-Батут",
           category: "kids",
           categoryLabel: "Детям",
           description:
@@ -1082,7 +1083,7 @@
           category: "kids",
           categoryLabel: "Детям",
           description:
-            "Большая современная площадка рядом с памятником Лермонтову. Находится в тени деревьев, среди зелени. Подходит для детей практически любого возраста.",
+            "Большая современная площадка рядом с памятником Лермонтову. Находится в тени деревьев, среди зелени. Подходит для детей практически любого возраста. Ещё много детских площадок поменьше вдоль набережной.",
           tags: ["площадка", "Центральный пляж", "тень"],
           priority: 3,
         },
@@ -1112,8 +1113,6 @@
           category: "sport",
           categoryLabel: "Спортивные площадки",
           description: "Открытая баскетбольная площадка рядом с ЖК «Столичный квартал».",
-          mapUrl:
-            "https://yandex.com/maps/org/dvorovaya_ploshchadka_divnomorskaya_37_k20/7181650768?si=8v12cb9mk3216hmppp2516vcb0",
           tags: ["баскетбол", "Южный район"],
           priority: 2,
         },
@@ -1175,6 +1174,81 @@
           priority: 5,
         },
       ];
+
+      const staticMapUrls = new Map(
+        Object.entries({
+          "zhane-waterfalls": "https://yandex.com/maps/-/CTeUUF37",
+          "mountain-cross": "https://yandex.com/maps/-/CTeUUWOB",
+          "terrenkur-markhot": "https://yandex.com/maps/-/CTeUYEMj",
+          "golubaya-bezdna": "https://yandex.com/maps/-/CTeUYRjw",
+          dzhankhot: "https://yandex.com/maps/-/CTeUY0p2",
+          "praskoveevka-parus-rock": "https://yandex.com/maps/-/CTeUY-N2",
+          "rio-shipwreck": "https://yandex.com/maps/-/CTeU4YO4",
+          "old-park-kabardinka": "https://yandex.com/maps/-/CTeU4VyQ",
+          "chateau-de-talu": "https://yandex.com/maps/-/CTeU4K6J",
+          "abrau-durso": "https://yandex.com/maps/-/CTeUa438",
+          "the-mediterra-green": "https://yandex.com/maps/-/CTeUaV3S",
+          "vienskiy-dvorik": "https://yandex.com/maps/-/CTeUaO~m",
+          "syrovarnya-rybinsk": "https://yandex.com/maps/-/CTeUaX74",
+          "mangal-house": "https://yandex.com/maps/-/CTeUeO-z",
+          "stanichniy-dvorik": "https://yandex.com/maps/-/CTeUeP44",
+          "roni-oyster": "https://yandex.com/maps/-/CTeUiIis",
+          "santa-fe": "https://yandex.com/maps/-/CTeUiJMW",
+          "prichal-93": "https://yandex.com/maps/-/CTeUiCPW",
+          "tom-yam": "https://yandex.com/maps/-/CTeUiWYJ",
+          "laguna-club-restaurant": "https://yandex.com/maps/-/CTeUiL18",
+          mayak: "https://yandex.com/maps/-/CTeUm4nu",
+          dacha: "https://yandex.com/maps/-/CTeUmRor",
+          edison: "https://yandex.com/maps/-/CTeUmG72",
+          sicilia: "https://yandex.com/maps/-/CTeUm8jB",
+          "tsekh-nashego-goroda": "https://yandex.com/maps/-/CTeUmTPV",
+          "bereg-kofe": "https://yandex.com/maps/-/CTeUqTl0",
+          elephant: "https://yandex.com/maps/-/CTeUuYyU",
+          "mandelstam-cat": "https://yandex.com/maps/-/CTeUuNIm",
+          lumen: "https://yandex.com/maps/-/CTeUuGY2",
+          gelatiamo: "https://yandex.com/maps/-/CTeUyJ5p",
+          "el-pan": "https://yandex.com/maps/-/CTeUyZls",
+          keks: "https://yandex.com/maps/-/CTeUyOmd",
+          "metropol-beach": "https://yandex.com/maps/-/CTeUyD3S",
+          "krasnaya-talka-beach": "https://yandex.com/maps/-/CTeU5NKk",
+          "rakushka-divnomorskaya": "https://yandex.com/maps/-/CTeU58YL",
+          "open-sea-spinka-delfina": "https://yandex.com/maps/-/CTeUBEPo",
+          "molodezhny-park": "https://yandex.com/maps/-/CTeUBBkZ",
+          "vrungel-park": "https://yandex.com/maps/-/CTeUBV0k",
+          kontinent: "https://yandex.com/maps/-/CTeUFF1f",
+          "tut-batut-toystation": "https://yandex.com/maps/-/CTeUFWJh",
+          "central-beach-playground": "https://yandex.com/maps/-/CTeUJD~4",
+          "central-park-culture-rest": "https://yandex.com/maps/-/CTeUNHYH",
+          "limpopo-sport-ground": "https://yandex.com/maps/-/CTeURAl0",
+          "southern-basketball-court": "https://yandex.com/maps/-/CTeURY09",
+          "golden-bay-waterpark": "https://yandex.com/maps/-/CTeURZpc",
+          "wine-city": "https://yandex.com/maps/-/CTeUVD4u",
+          "weekend-fair": "https://yandex.com/maps/-/CTeU6Ej3",
+          "central-market": "https://yandex.com/maps/-/CTeU6Oi-",
+        }),
+      );
+
+      const placesWithoutMap = new Set(["sushi-rolls"]);
+      const mapSearchQueries = new Map(
+        Object.entries({
+          "surf-library-lally": "Surf Coffee Библиотека кофе Lally Геленджик",
+          "central-sand-beaches": "Центральный пляж Геленджик",
+          "beaches-right-left": "Пляжи Геленджика",
+          "tennis-courts": "Теннисные корты Геленджик",
+          "beach-volleyball": "Пляжный волейбол Геленджик",
+        }),
+      );
+
+      for (const place of places) {
+        const staticMapUrl = staticMapUrls.get(place.id);
+        if (staticMapUrl) {
+          place.mapUrl = staticMapUrl;
+        }
+
+        if (!place.mapUrl && !placesWithoutMap.has(place.id)) {
+          place.mapUrl = yandexMapSearchUrl(mapSearchQueries.get(place.id) || `${place.title} Геленджик`);
+        }
+      }
 
       const categoryOrder = new Map(categories.map((category, index) => [category.id, index]));
       const categoryById = new Map(categories.map((category) => [category.id, category]));
